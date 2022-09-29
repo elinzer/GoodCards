@@ -20,3 +20,17 @@ class CardModel(db.Model):
     updated_at = db.Column(db.DateTime, default=func.now(), onupdate=func.now())
 
     deck = db.relationship("Deck", back_populates="cards")
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "type": self.type,
+            "rarity": self.rarity,
+            "set": self.set,
+            "text": self.text,
+            "flavor": self.flavor,
+            "artist": self.artist,
+            "img_url": self.img_url,
+            "deck_id": self.deck_id
+        }
