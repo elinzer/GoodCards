@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint
 from app.models import CardModel, card
 
 card_routes = Blueprint('cards', __name__)
