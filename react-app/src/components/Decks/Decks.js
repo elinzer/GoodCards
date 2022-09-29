@@ -1,9 +1,13 @@
 import * as deckActions from '../../store/deck';
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from 'react'
+import { NavLink } from 'react-router-dom'
+import DeckForm from './DeckForm';
+import './Decks.css'
+import defaultImg from '../../images/defaultCard.png'
 
 const Decks = () => {
-
+    const sessionUser = useSelector(state => state.session.user)
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -17,16 +21,20 @@ const Decks = () => {
     return (
         <div>
             <h1> All Decks</h1>
-            <ul>
+            <ul className='deck-list'>
                 {decks.map(deck => {
-                    console.log(deck)
                     return (
-                        <div>
-                            <li key={deck.id}>{deck.name}, {deck.description}</li>
+                        <div className='deck-preview'>
+                            <li key={deck.id}>
+                            <img className='preview-img' style={{maxHeight: '370px', maxWidth: '265px'}} src={deck.img_url} onError={(e) => e.target.src = defaultImg}/>
+                                {deck.name}</li>
                         </div>
                     )
                 })}
             </ul>
+            <div>
+               {sessionUser && (<DeckForm />)}
+            </div>
         </div>
     )
 }
