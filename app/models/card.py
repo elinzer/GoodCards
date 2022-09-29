@@ -2,7 +2,7 @@ from .db import db
 from datetime import datetime
 from sqlalchemy import func
 
-class Card(db.Model):
+class CardModel(db.Model):
     __tablename__ = 'cards'
 
     id = db.Column(db.Integer, primary_key = True)
@@ -12,9 +12,10 @@ class Card(db.Model):
     rarity = db.Column(db.String, nullable=False)
     set = db.Column(db.String, nullable=False)
     text = db.Column(db.String, nullable=False)
-    flavor = db.Column(db.String, nullable=False)
+    flavor = db.Column(db.String, nullable=True)
     artist = db.Column(db.String, nullable=False)
     img_url = db.Column(db.String, nullable=False)
+    deck_id = db.Column(db.Integer, db.ForeignKey('decks.id'), nullable=True)
 
     created_at = db.Column(db.DateTime, default=func.now())
     updated_at = db.Column(db.DateTime, default=func.now(), onupdate=func.now())
