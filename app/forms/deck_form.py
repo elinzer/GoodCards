@@ -6,4 +6,4 @@ class DeckForm(FlaskForm):
     name = StringField('Name', validators=[DataRequired()])
     user_id = IntegerField('User Id', validators=[DataRequired()])
     description = TextAreaField('Description', validators=[DataRequired()])
-    image_url = StringField('Image', validators=[DataRequired()])
+    img_url = StringField('Image', validators=[DataRequired()])

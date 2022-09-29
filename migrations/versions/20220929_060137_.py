@@ -1,4 +1,4 @@
-"""empty message
+"""create_decks,cards,comments_tables
 
 Revision ID: cf3b07e54ea4
 Revises: ffdc0a98111c
