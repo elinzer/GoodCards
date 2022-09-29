@@ -1,4 +1,4 @@
-
+import navLogo from '../images/navLogo.png'
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
@@ -9,7 +9,7 @@ const NavBar = () => {
       <ul>
         <li>
           <NavLink to='/' exact={true} activeClassName='active'>
-            Home
+            <img style={{maxHeight: '90px'}} src={navLogo}/>
           </NavLink>
         </li>
         <li>

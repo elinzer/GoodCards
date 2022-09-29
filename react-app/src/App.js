@@ -5,10 +5,11 @@ import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
-import UsersList from './components/UsersList';
+// import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 import Cards from './components/Cards/Cards';
+import Decks from './components/Decks/Decks';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -46,6 +47,9 @@ function App() {
         </ProtectedRoute>
         <Route path='/test-cards'>
         <Cards />
+        </Route>
+        <Route path='/test-decks'>
+          <Decks />
         </Route>
       </Switch>
     </BrowserRouter>

@@ -21,7 +21,14 @@ const Cards = () => {
             <ul className='card-container'>
                 {cards.map(card => {
                     return (
-                        <li key={card.id}><img src={card.img_url} onError={(e) => e.target.src = defaultImg} /></li>
+                        <div className='inner-card-container'>
+                        <li key={card.id}>
+                            <img
+                                className='card-img'
+                                src={card.img_url}
+                                onError={(e) => e.target.src = defaultImg} /></li>
+                        <li>{card.name}</li>
+                        </div>
                     )
                 })}
             </ul>
