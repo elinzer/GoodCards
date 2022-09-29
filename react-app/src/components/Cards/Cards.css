@@ -1,0 +1,12 @@
+.card-container {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+img {
+    max-width: 265px;
+    max-height: 370px;
+    border: 1px solid black;
+    border-radius: 15px;
+}
