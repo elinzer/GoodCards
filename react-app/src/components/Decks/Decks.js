@@ -9,11 +9,6 @@ import defaultImg from '../../images/defaultCard.png'
 const Decks = () => {
     const sessionUser = useSelector(state => state.session.user)
     const dispatch = useDispatch()
-
-    useEffect(() => {
-        dispatch(deckActions.getDecks())
-    }, [dispatch])
-
     const deckState = useSelector(state => state.decks)
     const decks = Object.values(deckState)
 
@@ -26,7 +21,7 @@ const Decks = () => {
                     return (
                         <div className='deck-preview'>
                             <li key={deck.id}>
-                            <img className='preview-img' style={{maxHeight: '370px', maxWidth: '265px'}} src={deck.img_url} onError={(e) => e.target.src = defaultImg}/>
+                            <NavLink to={`/decks/${deck.id}`}><img className='preview-img' style={{maxHeight: '370px', maxWidth: '265px'}} src={deck.img_url} onError={(e) => e.target.src = defaultImg}/></NavLink>
                                 {deck.name}</li>
                         </div>
                     )

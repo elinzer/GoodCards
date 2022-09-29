@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 // import UsersList from './components/UsersList';
+import * as deckActions from './store/deck';
 import User from './components/User';
 import { authenticate } from './store/session';
 import Cards from './components/Cards/Cards';
 import Decks from './components/Decks/Decks';
+import DeckDetail from './components/Decks/DeckDetail';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -21,6 +23,13 @@ function App() {
       setLoaded(true);
     })();
   }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(deckActions.getDecks())
+}, [dispatch])
+
+  const deckState = useSelector(state => state.decks)
+  const decks = Object.values(deckState)
 
   if (!loaded) {
     return null;
@@ -50,6 +59,9 @@ function App() {
         </Route>
         <Route path='/test-decks'>
           <Decks />
+        </Route>
+        <Route path='/decks/:id'>
+          <DeckDetail decks={decks}/>
         </Route>
       </Switch>
     </BrowserRouter>
