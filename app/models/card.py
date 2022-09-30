@@ -1,3 +1,4 @@
+from app.models.deck_card import deck_cards
 from .db import db
 from datetime import datetime
 from sqlalchemy import func
@@ -14,12 +15,11 @@ class CardModel(db.Model):
     flavor = db.Column(db.String, nullable=True)
     artist = db.Column(db.String, nullable=False)
     img_url = db.Column(db.String(1000), nullable=True)
-    deck_id = db.Column(db.Integer, db.ForeignKey('decks.id'), nullable=True)
 
     created_at = db.Column(db.DateTime, default=func.now())
     updated_at = db.Column(db.DateTime, default=func.now(), onupdate=func.now())
 
-    deck = db.relationship("Deck", back_populates="cards")
+    decks = db.relationship("Deck", secondary=deck_cards, back_populates="cards")
 
     def to_dict(self):
         return {
