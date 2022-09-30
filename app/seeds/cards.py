@@ -25,7 +25,6 @@ def seed_cards():
                              flavor=flavor,
                              artist=card["artist"],
                              img_url=img,
-                             deck_id=1
                             )
         db.session.add(new_card)
     db.session.commit()
