@@ -1,27 +1,35 @@
+import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams, Redirect } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import defaultCard from '../../images/defaultCard.png';
 import * as deckActions from '../../store/deck';
+import './DeckDetail.css'
 
-const DeckDetail = () => {
+const DeckDetail = ({decks}) => {
     const { id } = useParams();
     const dispatch = useDispatch();
-    const deckState = useSelector(state => state.decks);
+    const history = useHistory();
+    const deckList = Object.values(decks);
     const sessionUser = useSelector(state => state.session.user);
-    const decks = Object.values(deckState);
-    let currentDeck = decks.find(deck => deck.id == id);
+    let currentDeck = deckList.find(deck => deck.id == id)
+    const [deckName, setDeckName] = useState(currentDeck?.name);
 
+    
     const handleDelete = () => {
-        dispatch(deckActions.deleteDeckById(id))
+        dispatch(deckActions.deleteDeckById(currentDeck?.id))
+        history.push('/test-decks')
     }
 
     return (
-        <div>
-            <h1>Deck Detail</h1>
-            <div>{sessionUser.id === currentDeck?.user_id ? (<><button>Edit Deck Info</button><button onClick={handleDelete}>Delete Deck</button></>) : null } </div>
-            <div>{currentDeck?.name}</div>
+        <div className='detail-container'>
+            <div><input
+                        value={deckName}
+                        onChange={(e) => setDeckName(e.target.value)}
+                        required
+                        /></div>
             <div><img src={currentDeck?.img_url} onError={(e) => e.target.src = defaultCard}/></div>
             <div>{currentDeck?.description}</div>
+            <div>{sessionUser.id === currentDeck?.user_id ? (<button onClick={handleDelete}>Delete Deck</button>) : null } </div>
         </div>
     )
 }

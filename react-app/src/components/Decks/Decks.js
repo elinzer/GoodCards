@@ -11,7 +11,7 @@ const Decks = () => {
     const dispatch = useDispatch()
     const deckState = useSelector(state => state.decks)
     const decks = Object.values(deckState)
-
+    console.log(decks)
 
     return (
         <div>
