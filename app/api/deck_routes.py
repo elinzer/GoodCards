@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from app.api.auth_routes import login, validation_errors_to_error_messages
+from app.api.auth_routes import validation_errors_to_error_messages
 from app.models import db, Deck
 from flask_login import login_required, current_user
 from ..forms.deck_form import DeckForm
@@ -56,6 +56,7 @@ def update_deck(id):
         deck = Deck.query.get(id)
         if deck.user_id == current_user.id:
             deck.name = form.name.data
+            deck.user_id = deck.user_id
             deck.description = form.description.data
             deck.img_url = form.img_url.data
             db.session.commit()
@@ -68,7 +69,7 @@ def update_deck(id):
 @deck_routes.route('/<int:id>', methods=['DELETE'])
 @login_required
 def delete_deck(id):
-    deck = Deck.query.get(id)
+    deck = Deck.query.filter(Deck.id == id).first()
     if deck.user_id == current_user.id:
         db.session.delete(deck)
         db.session.commit()

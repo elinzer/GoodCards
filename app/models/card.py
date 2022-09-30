@@ -32,5 +32,4 @@ class CardModel(db.Model):
             "flavor": self.flavor,
             "artist": self.artist,
             "img_url": self.img_url,
-            "deck_id": self.deck_id
         }

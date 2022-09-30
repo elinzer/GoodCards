@@ -29,7 +29,6 @@ function App() {
 }, [dispatch])
 
   const deckState = useSelector(state => state.decks)
-  const decks = Object.values(deckState)
 
   if (!loaded) {
     return null;
@@ -61,7 +60,7 @@ function App() {
           <Decks />
         </Route>
         <Route path='/decks/:id'>
-          <DeckDetail decks={decks}/>
+          <DeckDetail decks={deckState}/>
         </Route>
       </Switch>
     </BrowserRouter>
