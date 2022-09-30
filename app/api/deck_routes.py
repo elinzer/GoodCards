@@ -56,6 +56,7 @@ def update_deck(id):
         deck = Deck.query.get(id)
         if deck.user_id == current_user.id:
             deck.name = form.name.data
+            deck.user_id = deck.user_id
             deck.description = form.description.data
             deck.img_url = form.img_url.data
             db.session.commit()

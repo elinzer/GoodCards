@@ -1,35 +1,70 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import defaultCard from '../../images/defaultCard.png';
 import * as deckActions from '../../store/deck';
 import './DeckDetail.css'
 
-const DeckDetail = ({decks}) => {
+const DeckDetail = ({ decks }) => {
     const { id } = useParams();
     const dispatch = useDispatch();
+    const refOne = useRef(null);
+    const refTwo = useRef(null);
     const history = useHistory();
-    const deckList = Object.values(decks);
     const sessionUser = useSelector(state => state.session.user);
-    let currentDeck = deckList.find(deck => deck.id == id)
-    const [deckName, setDeckName] = useState(currentDeck?.name);
+    const deckList = Object.values(decks);
+    let currentDeck = deckList.find(deck => deck.id == id);
 
-    
+    const [deckName, setDeckName] = useState(currentDeck?.name);
+    const [description, setDescription] = useState(currentDeck?.description);
+    const [imageUrl, setImageUrl] = useState(currentDeck?.img_url)
+
+
     const handleDelete = () => {
         dispatch(deckActions.deleteDeckById(currentDeck?.id))
         history.push('/test-decks')
     }
 
+    const handleEdit = () => {
+        const editInfo = {
+            name: deckName,
+            user_id: sessionUser.id,
+            description: description,
+            img_url: imageUrl
+        }
+
+        dispatch(deckActions.editDeck(editInfo, currentDeck?.id))
+    }
+
+    const handleClickOne = () => {
+        refOne.current.focus()
+    }
+
+    const handleClickTwo = () => {
+        refTwo.current.focus()
+    }
+
     return (
         <div className='detail-container'>
             <div><input
-                        value={deckName}
-                        onChange={(e) => setDeckName(e.target.value)}
-                        required
-                        /></div>
-            <div><img src={currentDeck?.img_url} onError={(e) => e.target.src = defaultCard}/></div>
-            <div>{currentDeck?.description}</div>
-            <div>{sessionUser.id === currentDeck?.user_id ? (<button onClick={handleDelete}>Delete Deck</button>) : null } </div>
+                className='deck-name-input'
+                ref={refOne}
+                value={deckName}
+                onChange={(e) => setDeckName(e.target.value)}
+                readOnly={sessionUser.id === currentDeck?.user_id ? false : true}
+                required
+            /></div>
+            <div>{sessionUser.id === currentDeck?.user_id ? (<button onClick={handleClickOne}><i class="fa-regular fa-pen-to-square"></i></button>) : null}</div>
+            <div><img style={{ maxHeight: '370px', maxWidth: '265px' }} src={currentDeck?.img_url} onError={(e) => e.target.src = defaultCard} /></div>
+            <div><textarea
+                ref={refTwo}
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                readOnly={sessionUser.id === currentDeck?.user_id ? false : true}
+                required
+            /></div>
+            <div>{sessionUser.id === currentDeck?.user_id ? (<button onClick={handleClickTwo}><i class="fa-regular fa-pen-to-square"></i></button>) : null}</div>
+            <div>{sessionUser.id === currentDeck?.user_id ? (<><button onClick={handleEdit}>Save changes</button><button onClick={handleDelete}>Delete Deck</button></>) : null} </div>
         </div>
     )
 }
