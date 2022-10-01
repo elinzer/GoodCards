@@ -65,9 +65,9 @@ function App() {
         <Route path='/decks/:id'>
           <DeckDetail decks={deckState}/>
         </Route>
-        <Route path='/edit-comment'>
+        <ProtectedRoute path='/edit-comment/:id'>
           <EditComment />
-        </Route>
+        </ProtectedRoute>
       </Switch>
     </BrowserRouter>
   );

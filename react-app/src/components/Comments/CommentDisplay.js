@@ -48,7 +48,7 @@ const CommentDisplay = ({deck}) => {
                         <li key={comment.id}>
                             {comment.comment_body}
                             {comment.user_id == sessionUser.id ? (<>
-                            <NavLink to='/edit-comment'><button>edit</button></NavLink>
+                            <NavLink to={`/edit-comment/${comment.id}`}><button>edit</button></NavLink>
                             <button onClick={(e) => handleDelete(e, comment.id)}><i class="fa-regular fa-trash-can" /></button>
                             </>) : null}</li>
                     )
