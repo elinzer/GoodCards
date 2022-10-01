@@ -15,3 +15,12 @@ class Comment(db.Model):
 
     deck = db.relationship('Deck', back_populates='comments')
     user = db.relationship('User', back_populates='comments')
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "deck_id": self.deck_id,
+            "user_id": self.user_id,
+            "comment_body": self.comment_body,
+            "created_at": self.created_at
+        }
