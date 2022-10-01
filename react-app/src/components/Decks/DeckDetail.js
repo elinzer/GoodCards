@@ -4,6 +4,7 @@ import { useParams, useHistory } from 'react-router-dom';
 import defaultCard from '../../images/defaultCard.png';
 import * as deckActions from '../../store/deck';
 import './DeckDetail.css'
+import CommentDisplay from '../Comments/CommentDisplay';
 
 const DeckDetail = ({ decks }) => {
     const { id } = useParams();
@@ -13,7 +14,7 @@ const DeckDetail = ({ decks }) => {
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
     const deckList = Object.values(decks);
-    let currentDeck = deckList.find(deck => deck.id == id);
+    let currentDeck = deckList?.find(deck => deck.id == id);
 
     const [deckName, setDeckName] = useState(currentDeck?.name);
     const [description, setDescription] = useState(currentDeck?.description);
@@ -65,6 +66,7 @@ const DeckDetail = ({ decks }) => {
             /></div>
             <div>{sessionUser.id === currentDeck?.user_id ? (<button onClick={handleClickTwo}><i class="fa-regular fa-pen-to-square"></i></button>) : null}</div>
             <div>{sessionUser.id === currentDeck?.user_id ? (<><button onClick={handleEdit}>Save changes</button><button onClick={handleDelete}>Delete Deck</button></>) : null} </div>
+            <div><CommentDisplay decks={decks}/></div>
         </div>
     )
 }

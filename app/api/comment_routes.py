@@ -39,7 +39,7 @@ def create_comment():
 
 
 # update comment
-@comment_routes.route('/<int:id>', methods='PUT')
+@comment_routes.route('/<int:id>', methods=['PUT'])
 @login_required
 def update_comment(id):
     form = CommentForm()
