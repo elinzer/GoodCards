@@ -8,10 +8,9 @@ import defaultImg from '../../images/defaultCard.png'
 
 const Decks = () => {
     const sessionUser = useSelector(state => state.session.user)
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
     const deckState = useSelector(state => state.decks)
     const decks = Object.values(deckState)
-    console.log(decks)
 
     return (
         <div>

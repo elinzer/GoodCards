@@ -28,5 +28,6 @@ class Deck(db.Model):
             "description": self.description,
             "img_url": self.img_url,
             "card_ids": [card.id for card in self.cards],
+            "comments": [comment.to_dict() for comment in self.comments],
             "created_at": self.created_at,
         }

@@ -7,6 +7,8 @@ import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 // import UsersList from './components/UsersList';
 import * as deckActions from './store/deck';
+import * as cardActions from './store/card';
+import * as commentActions from './store/comment'
 import User from './components/User';
 import { authenticate } from './store/session';
 import Cards from './components/Cards/Cards';
@@ -20,13 +22,13 @@ function App() {
   useEffect(() => {
     (async() => {
       await dispatch(authenticate());
+      await dispatch(deckActions.getDecks());
+      await dispatch(cardActions.getCards());
+      await dispatch(commentActions.getComments());
       setLoaded(true);
     })();
   }, [dispatch]);
 
-  useEffect(() => {
-    dispatch(deckActions.getDecks())
-}, [dispatch])
 
   const deckState = useSelector(state => state.decks)
 
