@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import * as commentActions from '../../store/comment'
@@ -12,8 +12,8 @@ const CommentDisplay = ({deck}) => {
     const deckComments = allComments.filter(comment => {
         return comment.deck_id == deck.id
     })
-
     const [comment, setComment] = useState('');
+
 
     const handlePost = () => {
         const commentData = {
@@ -45,7 +45,12 @@ const CommentDisplay = ({deck}) => {
             <ul>
                 {deckComments.map(comment => {
                     return (
-                        <li key={comment.id}>{comment.comment_body}, posted on {comment.created_at}{comment.user_id == sessionUser.id ? (<><button><i class="fa-regular fa-pen-to-square" /></button><button onClick={(e) => handleDelete(e, comment.id)}><i class="fa-regular fa-trash-can" /></button></>) : null}</li>
+                        <li key={comment.id}>
+                            {comment.comment_body}
+                            {comment.user_id == sessionUser.id ? (<>
+                            <NavLink to='/edit-comment'><button>edit</button></NavLink>
+                            <button onClick={(e) => handleDelete(e, comment.id)}><i class="fa-regular fa-trash-can" /></button>
+                            </>) : null}</li>
                     )
                 })}
             </ul>
