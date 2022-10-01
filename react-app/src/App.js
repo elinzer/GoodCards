@@ -14,6 +14,7 @@ import { authenticate } from './store/session';
 import Cards from './components/Cards/Cards';
 import Decks from './components/Decks/Decks';
 import DeckDetail from './components/Decks/DeckDetail';
+import EditComment from './components/Comments/EditComment';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -64,6 +65,9 @@ function App() {
         <Route path='/decks/:id'>
           <DeckDetail decks={deckState}/>
         </Route>
+        <ProtectedRoute path='/edit-comment/:id'>
+          <EditComment />
+        </ProtectedRoute>
       </Switch>
     </BrowserRouter>
   );
