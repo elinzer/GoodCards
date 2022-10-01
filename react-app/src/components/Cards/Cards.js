@@ -6,11 +6,11 @@ import defaultImg from '../../images/defaultCard.png'
 
 const Cards = () => {
 
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(cardActions.getCards());
-    }, [dispatch]);
+    // useEffect(() => {
+    //     dispatch(cardActions.getCards());
+    // }, [dispatch]);
 
     const cardState = useSelector(state => state.cards)
     const cards = Object.values(cardState)

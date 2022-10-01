@@ -66,7 +66,7 @@ const DeckDetail = ({ decks }) => {
             /></div>
             <div>{sessionUser.id === currentDeck?.user_id ? (<button onClick={handleClickTwo}><i class="fa-regular fa-pen-to-square"></i></button>) : null}</div>
             <div>{sessionUser.id === currentDeck?.user_id ? (<><button onClick={handleEdit}>Save changes</button><button onClick={handleDelete}>Delete Deck</button></>) : null} </div>
-            <div><CommentDisplay decks={decks}/></div>
+            <div><CommentDisplay deck={currentDeck}/></div>
         </div>
     )
 }
