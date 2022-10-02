@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
 from app.api.auth_routes import validation_errors_to_error_messages
-from app.models import db, Deck
+from app.models import db, Deck, CardModel
 from flask_login import login_required, current_user
 from ..forms.deck_form import DeckForm
 
@@ -61,6 +61,26 @@ def update_deck(id):
             deck.img_url = form.img_url.data
             db.session.commit()
             return jsonify(deck.to_dict()), 200
+    else:
+        return {'errors': 'Unauthorized'}, 401
+
+
+# add/remove card to deck
+@deck_routes.route('/<int:id>', methods=['PATCH'])
+@login_required
+def add_card(id):
+    data = request.get_json()
+    # deck_id = data['deckId']
+    deck = Deck.query.get(id)
+    card_id = data['card_id']
+    card = CardModel.query.get(card_id)
+    if deck.user_id == current_user.id:
+        if card not in deck.cards:
+            deck.cards.append(card)
+        else:
+            deck.cards.remove(card)
+        db.session.commit()
+        return jsonify(deck.to_dict()), 200
     else:
         return {'errors': 'Unauthorized'}, 401
 

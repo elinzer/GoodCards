@@ -1,4 +1,5 @@
 import * as cardActions from '../../store/card'
+import * as deckActions from '../../store/deck'
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import './Cards.css'
@@ -6,14 +7,19 @@ import defaultImg from '../../images/defaultCard.png'
 
 const Cards = () => {
 
-    // const dispatch = useDispatch();
-
-    // useEffect(() => {
-    //     dispatch(cardActions.getCards());
-    // }, [dispatch]);
-
+    const dispatch = useDispatch()
+    const sessionUser = useSelector(state => state.session.user)
     const cardState = useSelector(state => state.cards)
     const cards = Object.values(cardState)
+
+    const addToDeck = (e, cardId) => {
+        const data = {
+            card_id: cardId,
+            deck_id: 1
+        }
+
+         dispatch(deckActions.addCard(data))
+    }
 
     return (
         <div>
@@ -28,6 +34,8 @@ const Cards = () => {
                                 src={card.img_url}
                                 onError={(e) => e.target.src = defaultImg} /></li>
                         <li>{card.name}</li>
+                        <li>{card.deck_ids}</li>
+                        <button onClick={(e) => addToDeck(e, card.id )}>Add to deck</button>
                         </div>
                     )
                 })}
