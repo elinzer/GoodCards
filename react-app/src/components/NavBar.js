@@ -2,14 +2,15 @@ import navLogo from '../images/navLogo.png'
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
+import './NavBar.css'
 
 const NavBar = () => {
   return (
-    <nav>
-      <ul>
+    <nav className='nav-container'>
+      <ul className='nav-list'>
         <li>
           <NavLink to='/' exact={true} activeClassName='active'>
-            <img style={{maxHeight: '90px'}} src={navLogo}/>
+            <img style={{maxHeight: '70px'}} src={navLogo}/>
           </NavLink>
         </li>
         <li>
