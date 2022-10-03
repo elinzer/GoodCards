@@ -92,6 +92,9 @@ export default function cardReducer(state = {}, action) {
     case ADD_CARD:
       newState[action.payload.id] = action.payload;
       return newState;
+    case REMOVE_CARD:
+      newState[action.payload.id] = action.payload;
+      return newState;
     default:
       return state;
   }
