@@ -1,0 +1,11 @@
+.login-form-container{
+    border: 1px solid red;
+    display: flex;
+    justify-content: center;
+}
+
+.login-form {
+    border: 1px solid blue;
+    display: flex;
+    flex-direction: column;
+}

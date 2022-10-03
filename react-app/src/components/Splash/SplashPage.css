@@ -1,0 +1,8 @@
+.splash-container {
+    display: flex;
+    border: 1px solid black;
+}
+
+.session-links {
+    border: 1px solid red;
+}

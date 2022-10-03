@@ -15,6 +15,7 @@ import Cards from './components/Cards/Cards';
 import Decks from './components/Decks/Decks';
 import DeckDetail from './components/Decks/DeckDetail';
 import EditComment from './components/Comments/EditComment';
+import SplashPage from './components/Splash/SplashPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -51,7 +52,7 @@ function App() {
           <User />
         </ProtectedRoute>
         <Route path='/' exact={true} >
-          <h1>Home Page</h1>
+          <SplashPage />
         </Route>
         <Route path='/test-cards'>
         <Cards />
