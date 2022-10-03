@@ -57,9 +57,9 @@ function App() {
         <Route path='/test-cards'>
         <Cards />
         </Route>
-        <Route path='/test-decks'>
+        {/* <Route path='/test-decks'>
           <Decks />
-        </Route>
+        </Route> */}
         <Route path='/decks/:id'>
           <DeckDetail decks={deckState}/>
         </Route>

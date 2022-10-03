@@ -11,12 +11,12 @@ const NavBar = () => {
 
   if (sessionUser) {
     sessionLinks = (
-    <div>
-      <button>Profile</button>
-      <li>
+      <div>
+        <button>Profile</button>
+        <li>
           <LogoutButton />
         </li>
-    </div>)
+      </div>)
   } else {
     sessionLinks = (
       <div>
@@ -27,14 +27,16 @@ const NavBar = () => {
 
   return (
     <nav className='nav-container'>
-      <ul className='nav-list'>
-        <li>
-          <NavLink to='/' exact={true} activeClassName='active'>
-            <img style={{ maxHeight: '70px' }} src={navLogo} />
-          </NavLink>
-        </li>
+      <div><NavLink to='/' exact={true} activeClassName='active'>
+        <img style={{ maxHeight: '70px' }} src={navLogo} />
+      </NavLink>
+      </div>
+
+      <div>
         {sessionLinks}
-      </ul>
+      </div>
+
+
     </nav>
   );
 }

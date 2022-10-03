@@ -1,7 +1,8 @@
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import './SplashPage.css'
-import backgroundImg from '../../images/mtgBackground.jpeg'
+import Decks from '../Decks/Decks';
+import './SplashPage.css';
+import splashHeader from '../../images/mtgSplash.png';
 
 
 const SplashPage = () => {
@@ -11,9 +12,11 @@ const SplashPage = () => {
     if (!sessionUser) {
         sessionLinks = (
             <div>
+                <div>
                 <NavLink to='/login' exact={true} activeClassName='active'>
                     Login
                 </NavLink>
+                </div>
                 <NavLink to='/sign-up' exact={true} activeClassName='active'>
                     Sign Up
                 </NavLink>
@@ -24,11 +27,14 @@ const SplashPage = () => {
 
     return (
         <div className="splash-container">
-            <div>
-                <img src={backgroundImg}></img>
+            <img className="header-image" src={splashHeader}></img>
+            <div className="decks-container">
+                <Decks />
             </div>
-            <div className="session-links">
-                {sessionLinks}
+            <div className="link-container">
+                <div className="session-links">
+                    {sessionLinks}
+                </div>
             </div>
         </div>
     )
