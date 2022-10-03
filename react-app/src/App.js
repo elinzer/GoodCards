@@ -16,6 +16,7 @@ import Decks from './components/Decks/Decks';
 import DeckDetail from './components/Decks/DeckDetail';
 import EditComment from './components/Comments/EditComment';
 import SplashPage from './components/Splash/SplashPage';
+import Footer from './components/Footer/Footer';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -41,6 +42,7 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar />
+      <Footer />
       <Switch>
         <Route path='/login' exact={true}>
           <LoginForm />

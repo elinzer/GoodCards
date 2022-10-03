@@ -20,7 +20,7 @@ const Decks = () => {
                     return (
                         <div className='deck-preview'>
                             <li key={deck.id}>
-                            <NavLink to={`/decks/${deck.id}`}><img className='preview-img' style={{maxHeight: '370px', maxWidth: '265px'}} src={deck.img_url} onError={(e) => e.target.src = defaultImg}/></NavLink>
+                            <NavLink to={`/decks/${deck.id}`}><img className='preview-img' src={deck.img_url} onError={(e) => e.target.src = defaultImg}/></NavLink>
                                 {deck.name}</li>
                         </div>
                     )
