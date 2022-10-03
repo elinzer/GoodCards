@@ -1,6 +1,7 @@
 //types
 const GET_ALL = 'cards/GET_ALL'
 const ADD_CARD = 'cards/ADD_CARD'
+const REMOVE_CARD = 'cards/REMOVE_CARD'
 
 //actions
 const getAll = (cards) => ({
@@ -13,6 +14,10 @@ const add = (deck) => ({
   payload: deck
 })
 
+const remove = (deck) => ({
+  type: REMOVE_CARD,
+  payload: deck
+})
 
 //thunks
 //get all
@@ -28,7 +33,6 @@ export const getCards = () => async (dispatch) => {
 //add card to deck
 export const addCardToDeck = (cardData) => async (dispatch) => {
   const {card_id} = cardData;
-  console.log(card_id)
   const res = await fetch(`/api/cards/${card_id}`, {
     method: 'PATCH',
     headers: {
@@ -39,6 +43,30 @@ export const addCardToDeck = (cardData) => async (dispatch) => {
   if (res.ok) {
     const card = await res.json();
     dispatch(add(card));
+    return card;
+  } else if (res.status < 500) {
+    const data = await res.json();
+    if (data.errors) {
+      return data;
+    }
+  } else {
+    return ["An error occurred. Please try again."];
+  }
+  return res;
+}
+
+export const removeCardFromDeck = (cardData) => async (dispatch) => {
+  const {card_id} = cardData;
+  const res = await fetch(`/api/cards/${card_id}`, {
+    method: 'PATCH',
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(cardData)
+  });
+  if (res.ok) {
+    const card = await res.json();
+    dispatch(remove(card));
     return card;
   } else if (res.status < 500) {
     const data = await res.json();

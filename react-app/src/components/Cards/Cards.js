@@ -34,8 +34,6 @@ const Cards = () => {
                                 src={card.img_url}
                                 onError={(e) => e.target.src = defaultImg} /></li>
                         <li>{card.name}</li>
-                        <li>{card.deck_ids}</li>
-                        <button onClick={(e) => addToDeck(e, card.id )}>Add to deck</button>
                         </div>
                     )
                 })}
