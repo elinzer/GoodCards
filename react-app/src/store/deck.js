@@ -112,51 +112,6 @@ export const editDeck = (deck, id) => async (dispatch) => {
   return res;
 };
 
-// add card to deck
-export const addCard = (AddData) => async (dispatch) => {
-  console.log(AddData)
-  const res = await fetch(`/api/decks/${1}`, {
-    method: 'PATCH',
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(AddData)
-  });
-  if (res.ok) {
-    const deck = await res.json();
-    dispatch(addCard(deck));
-    return deck;
-  } else if (res.status < 500) {
-    const data = await res.json();
-    if (data.errors) {
-      return data;
-    }
-  } else {
-    return ["An error occurred. Please try again."];
-  }
-  return res;
-}
-
-// remove card from deck
-export const removeCard = (deckId, cardId) => async (dispatch) => {
-  const res = await fetch(`/api/decks/${deckId}`, {
-    method: 'PATCH',
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(cardId)
-  });
-  if (res.ok) {
-    const deck = await res.json();
-    dispatch(remove(deck));
-    return deck;
-  } else if (res.status < 500) {
-    const data = await res.json();
-    if (data.errors) {
-      return data;
-    }
-  } else {
-    return ["An error occurred. Please try again."];
-  }
-  return res;
-}
-
 //delete deck
 export const deleteDeckById = (id) => async (dispatch) => {
   const res = await fetch(`/api/decks/${id}`, {
@@ -197,12 +152,6 @@ export default function deckReducer(state = {}, action) {
       return newState;
     case DELETE:
       delete newState[action.payload];
-      return newState;
-    case ADD_CARD:
-      newState[action.payload.id] = action.payload;
-      return newState;
-    case REMOVE_CARD:
-      newState[action.payload.id] = action.payload;
       return newState;
     default:
       return state;

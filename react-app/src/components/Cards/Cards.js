@@ -15,10 +15,10 @@ const Cards = () => {
     const addToDeck = (e, cardId) => {
         const data = {
             card_id: cardId,
-            deck_id: 1
+            deckId: 1
         }
 
-         dispatch(deckActions.addCard(data))
+         dispatch(cardActions.addCardToDeck(data))
     }
 
     return (
