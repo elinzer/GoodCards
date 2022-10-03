@@ -14,7 +14,7 @@ const Decks = () => {
 
     return (
         <div>
-            <h1> All Decks</h1>
+            <h2> Check out some of these decks:</h2>
             <ul className='deck-list'>
                 {decks.map(deck => {
                     return (

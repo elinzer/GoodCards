@@ -43,11 +43,11 @@ const CommentDisplay = ({deck}) => {
             />
             <button onClick={handlePost}>Post Comment</button>
             <ul>
-                {deckComments.map(comment => {
+                {deckComments?.map(comment => {
                     return (
-                        <li key={comment.id}>
+                        <li key={comment?.id}>
                             {comment.comment_body}
-                            {comment.user_id == sessionUser.id ? (<>
+                            {comment.user_id == sessionUser?.id ? (<>
                             <NavLink to={`/edit-comment/${comment.id}`}><button>edit</button></NavLink>
                             <button onClick={(e) => handleDelete(e, comment.id)}><i class="fa-regular fa-trash-can" /></button>
                             </>) : null}</li>

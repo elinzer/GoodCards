@@ -1,0 +1,11 @@
+.signup-form-container{
+    border: 1px solid red;
+    display: flex;
+    justify-content: center;
+}
+
+.signup-form {
+    border: 1px solid blue;
+    display: flex;
+    flex-direction: column;
+}
