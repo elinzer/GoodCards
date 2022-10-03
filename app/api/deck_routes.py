@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
 from app.api.auth_routes import validation_errors_to_error_messages
-from app.models import db, Deck
+from app.models import db, Deck, CardModel
 from flask_login import login_required, current_user
 from ..forms.deck_form import DeckForm
 

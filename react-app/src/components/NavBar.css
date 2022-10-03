@@ -1,0 +1,9 @@
+.nav-container {
+    background-color: #F4F1EA;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+}
