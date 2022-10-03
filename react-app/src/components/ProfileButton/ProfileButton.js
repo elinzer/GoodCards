@@ -30,7 +30,12 @@ const ProfileButton = ({ user }) => {
             </div>
             {showMenu && (
                 <div>
-                    <LogoutButton />
+                    <div>
+                        Hello, {user.username}!
+                    </div>
+                    <div>
+                        <LogoutButton />
+                    </div>
                 </div>)}
         </div>
     )

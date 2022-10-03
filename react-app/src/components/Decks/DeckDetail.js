@@ -47,26 +47,43 @@ const DeckDetail = ({ decks }) => {
 
     return (
         <div className='detail-container'>
-            <div><input
-                className='deck-name-input'
-                ref={refOne}
-                value={deckName}
-                onChange={(e) => setDeckName(e.target.value)}
-                readOnly={sessionUser?.id === currentDeck?.user_id ? false : true}
-                required
-            /></div>
-            <div>{sessionUser?.id === currentDeck?.user_id ? (<button onClick={handleClickOne}><i class="fa-regular fa-pen-to-square"></i></button>) : null}</div>
-            <div><img style={{ maxHeight: '370px', maxWidth: '265px' }} src={currentDeck?.img_url} onError={(e) => e.target.src = defaultCard} /></div>
-            <div><textarea
-                ref={refTwo}
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                readOnly={sessionUser?.id === currentDeck?.user_id ? false : true}
-                required
-            /></div>
-            <div>{sessionUser?.id === currentDeck?.user_id ? (<button onClick={handleClickTwo}><i class="fa-regular fa-pen-to-square"></i></button>) : null}</div>
-            <div>{sessionUser?.id === currentDeck?.user_id ? (<><button onClick={handleEdit}>Save changes</button><button onClick={handleDelete}>Delete Deck</button></>) : null} </div>
-            <div><CommentDisplay deck={currentDeck}/></div>
+            <div className='deck-name-container'>
+                <input
+                    className='deck-name-input'
+                    ref={refOne}
+                    value={deckName}
+                    onChange={(e) => setDeckName(e.target.value)}
+                    readOnly={sessionUser?.id === currentDeck?.user_id ? false : true}
+                    required
+                />
+                <div>
+                    {sessionUser?.id === currentDeck?.user_id ? (<button onClick={handleClickOne}><i class="fa-regular fa-pen-to-square"></i></button>) : null}
+                </div>
+            </div>
+            <div className='image-n-description'>
+                <div>
+                    <img style={{ maxHeight: '370px', maxWidth: '265px' }} src={currentDeck?.img_url} onError={(e) => e.target.src = defaultCard} />
+                </div>
+                <div>
+                    <textarea
+                        className='deck-description'
+                        ref={refTwo}
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                        readOnly={sessionUser?.id === currentDeck?.user_id ? false : true}
+                        required
+                    />
+                </div>
+            </div>
+            <div>
+                {sessionUser?.id === currentDeck?.user_id ? (<button onClick={handleClickTwo}><i class="fa-regular fa-pen-to-square"></i></button>) : null}
+            </div>
+            <div>
+                {sessionUser?.id === currentDeck?.user_id ? (<><button onClick={handleEdit}>Save changes</button><button onClick={handleDelete}>Delete Deck</button></>) : null}
+            </div>
+            <div>
+                <CommentDisplay deck={currentDeck} />
+            </div>
         </div>
     )
 }
