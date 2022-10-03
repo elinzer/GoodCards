@@ -4,8 +4,6 @@ const GET_CURRENT = "decks/GET_CURRENT";
 const CREATE = "decks/CREATE";
 const UPDATE = "decks/UPDATE";
 const DELETE = "decks/DELETE";
-const ADD_CARD = 'decks/ADD_CARD';
-const REMOVE_CARD = 'decks/REMOVE_CARD';
 
 //actions
 const getAll = (decks) => ({
@@ -32,16 +30,6 @@ const deleteOne = (deckId) => ({
   type: DELETE,
   payload: deckId,
 });
-
-const add = (deck) => ({
-  type: ADD_CARD,
-  payload: deck
-})
-
-const remove = (deck) => ({
-  type: REMOVE_CARD,
-  payload: deck
-})
 
 //thunks
 //get all
