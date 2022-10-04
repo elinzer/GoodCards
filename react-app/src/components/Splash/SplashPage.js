@@ -11,7 +11,7 @@ const SplashPage = () => {
     let sessionLinks;
     if (!sessionUser) {
         sessionLinks = (
-            <div>
+            <div className="session-links">
                 <div>
                 <NavLink to='/login' exact={true} activeClassName='active'>
                     Login
@@ -27,12 +27,12 @@ const SplashPage = () => {
 
     return (
         <div className="splash-container">
-            <img className="header-image" src={splashHeader}></img>
+            <img className="header-image" src={splashHeader} alt=''></img>
             <div className="decks-container">
                 <Decks />
             </div>
             <div className="link-container">
-                <div className="session-links">
+                <div>
                     {sessionLinks}
                 </div>
             </div>
