@@ -28,7 +28,7 @@ const SplashPage = () => {
 
     return (
         <div className="splash-container">
-            <img className="header-image" src={defaultCard} alt=''></img>
+            <img className="header-image" src='https://assets.dicebreaker.com/magic-the-gathering-trading-card-game-cards-8.JPG/BROK/thumbnail/1600x900/format/jpg/quality/80/magic-the-gathering-trading-card-game-cards-8.JPG' alt=''></img>
             <div className="decks-container">
                 <Decks />
             </div>
