@@ -2,6 +2,7 @@
     border: 1px solid red;
     margin-top: 70px;
     display: flex;
+    flex-direction: column;
 }
 
 .deck-name-container {
@@ -30,4 +31,8 @@
 
 .image-n-description {
     border: 1px solid gray;
+}
+
+.comment-container {
+    border: 1px solid green;
 }

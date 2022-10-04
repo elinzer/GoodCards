@@ -33,8 +33,6 @@ function App() {
   }, [dispatch]);
 
 
-  const deckState = useSelector(state => state.decks)
-
   if (!loaded) {
     return null;
   }
@@ -59,11 +57,8 @@ function App() {
         <Route path='/test-cards'>
         <Cards />
         </Route>
-        {/* <Route path='/test-decks'>
-          <Decks />
-        </Route> */}
         <Route path='/decks/:id'>
-          <DeckDetail decks={deckState}/>
+          <DeckDetail />
         </Route>
         <ProtectedRoute path='/edit-comment/:id'>
           <EditComment />
