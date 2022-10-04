@@ -18,6 +18,7 @@ import EditComment from './components/Comments/EditComment';
 import SplashPage from './components/Splash/SplashPage';
 import Footer from './components/Footer/Footer';
 import MyDecks from './components/UserPages/MyDecks';
+import DeckForm from './components/Decks/DeckForm';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -60,6 +61,9 @@ function App() {
         </Route>
         <ProtectedRoute path='/my-decks'>
           <MyDecks />
+        </ProtectedRoute>
+        <ProtectedRoute path='/create-deck'>
+          <DeckForm />
         </ProtectedRoute>
         <ProtectedRoute path='/edit-comment/:id'>
           <EditComment />

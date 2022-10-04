@@ -26,9 +26,9 @@ const Decks = () => {
                     )
                 })}
             </ul>
-            <div>
+            {/* <div>
                {sessionUser && (<DeckForm />)}
-            </div>
+            </div> */}
         </div>
     )
 }
