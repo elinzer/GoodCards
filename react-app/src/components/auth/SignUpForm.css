@@ -1,7 +1,10 @@
-.signup-form-container{
+.signup-form-container {
     border: 1px solid red;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    margin-top: 150px;
+    align-items: center;
 }
 
 .signup-form {

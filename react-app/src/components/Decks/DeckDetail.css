@@ -1,3 +1,38 @@
 .detail-container {
     border: 1px solid red;
+    margin-top: 70px;
+    display: flex;
+    flex-direction: column;
+}
+
+.deck-name-container {
+    border: 1px solid blue;
+    display: flex;
+    align-items: flex-start;
+}
+
+.deck-name-input {
+    border: none;
+}
+
+.deck-name-input {
+    cursor: default;
+}
+
+.deck-description {
+    border-style: none;
+    border-color: transparent;
+    resize: none;
+}
+
+.deck-description:hover {
+    cursor:default;
+}
+
+.image-n-description {
+    border: 1px solid gray;
+}
+
+.comment-container {
+    border: 1px solid green;
 }

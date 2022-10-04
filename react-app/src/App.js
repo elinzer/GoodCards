@@ -16,6 +16,7 @@ import Decks from './components/Decks/Decks';
 import DeckDetail from './components/Decks/DeckDetail';
 import EditComment from './components/Comments/EditComment';
 import SplashPage from './components/Splash/SplashPage';
+import Footer from './components/Footer/Footer';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -32,8 +33,6 @@ function App() {
   }, [dispatch]);
 
 
-  const deckState = useSelector(state => state.decks)
-
   if (!loaded) {
     return null;
   }
@@ -41,6 +40,7 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar />
+      <Footer />
       <Switch>
         <Route path='/login' exact={true}>
           <LoginForm />
@@ -57,11 +57,8 @@ function App() {
         <Route path='/test-cards'>
         <Cards />
         </Route>
-        {/* <Route path='/test-decks'>
-          <Decks />
-        </Route> */}
         <Route path='/decks/:id'>
-          <DeckDetail decks={deckState}/>
+          <DeckDetail />
         </Route>
         <ProtectedRoute path='/edit-comment/:id'>
           <EditComment />
