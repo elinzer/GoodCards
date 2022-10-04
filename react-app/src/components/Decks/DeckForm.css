@@ -1,0 +1,23 @@
+.outer-form-div {
+    border: 1px solid green;
+    margin-top: 70px;
+    display: flex;
+    justify-content: center;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.description-input {
+    resize: none;
+}
+
+.name-input:focus,
+.image-input:focus,
+.description-input:focus {
+    outline: none;
+}

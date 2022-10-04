@@ -1,5 +1,7 @@
 import './MyDecks.css';
 import { useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
+import defaultCard from '../../images/defaultCard.png'
 
 
 
@@ -12,16 +14,24 @@ const MyDecks = () => {
 
     return (
         <div className='my-deck-container'>
-            <ul>
+            <div>
+                <NavLink to='create-deck'>New Deck</NavLink>
+            </div>
+            <div className='inner-deck-container'>
                 {myDecks.map(deck => {
                     return (
                         <>
-                            <li><img src={deck.img_url} /></li>
-                            <li>{deck.name}</li>
+                            <div>
+                                <NavLink to={`/decks/${deck.id}`}>
+                                <img className='preview-img'
+                                src={deck.img_url}
+                                onError={(e) => e.target.src = defaultCard} /></NavLink>
+                                </div>
+                            <div>{deck.name}</div>
                         </>
                     )
                 })}
-            </ul>
+            </div>
         </div>
     )
 }
