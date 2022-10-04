@@ -14,14 +14,27 @@ const NavBar = () => {
     sessionLinks = (
       <div className='nav-list'>
         <div>
-          <NavLink to='/my-decks'><button>My decks</button></NavLink>
-          </div>
+          <NavLink to='/my-decks'><button className='my-decks-button'>My Decks</button></NavLink>
+        </div>
         <div>
-          <ProfileButton user={sessionUser}/>
-          </div>
+          <ProfileButton user={sessionUser} />
+        </div>
       </div>)
   } else {
-    sessionLinks = null
+    sessionLinks = (
+      <div className='nav-list'>
+        <div>
+          <NavLink to='/login' exact={true} activeClassName='active'>
+           <button>Log in</button>
+          </NavLink>
+        </div>
+        <div>
+        <NavLink to='/sign-up' exact={true} activeClassName='active'>
+                    <button>Sign Up</button>
+                </NavLink>
+        </div>
+      </div>
+    )
   }
 
 

@@ -8,33 +8,27 @@ import splashHeader from '../../images/mtgSplash.png';
 const SplashPage = () => {
 
     const sessionUser = useSelector(state => state.session.user)
-    let sessionLinks;
-    if (!sessionUser) {
-        sessionLinks = (
-            <div className="session-links">
-                <div>
-                <NavLink to='/login' exact={true} activeClassName='active'>
-                    Login
-                </NavLink>
-                </div>
-                <NavLink to='/sign-up' exact={true} activeClassName='active'>
-                    Sign Up
-                </NavLink>
-            </div>
-        )
-    }
-
+    // let sessionLinks;
+    // if (!sessionUser) {
+    //     sessionLinks = (
+    //         // <div className="session-links">
+    //         //     <div>
+    //         //     <NavLink to='/login' exact={true} activeClassName='active'>
+    //         //         Login
+    //         //     </NavLink>
+    //         //     </div>
+    //         //     <NavLink to='/sign-up' exact={true} activeClassName='active'>
+    //         //         Sign Up
+    //         //     </NavLink>
+    //         // </div>
+    //     )
+    // }
 
     return (
         <div className="splash-container">
             <img style={{opacity: '75%'}} className="header-image" src={splashHeader} alt=''></img>
             <div className="decks-container">
                 <Decks />
-            </div>
-            <div className="link-container">
-                <div>
-                    {sessionLinks}
-                </div>
             </div>
         </div>
     )

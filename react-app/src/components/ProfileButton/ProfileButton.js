@@ -1,5 +1,6 @@
 import LogoutButton from "../auth/LogoutButton";
 import { useEffect, useState } from "react";
+import './ProfileButton.css'
 
 
 
@@ -26,7 +27,10 @@ const ProfileButton = ({ user }) => {
     return (
         <div>
             <div>
-                <button onClick={openMenu}><i class="fa-solid fa-user"></i></button>
+                <button
+                className="profile-button"
+                onClick={openMenu}>
+                    <i className="prof-icon fa-regular fa-user"></i></button>
             </div>
             {showMenu && (
                 <div>

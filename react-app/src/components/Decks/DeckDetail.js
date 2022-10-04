@@ -25,7 +25,7 @@ const DeckDetail = () => {
 
     const handleDelete = () => {
         dispatch(deckActions.deleteDeckById(currentDeck?.id))
-        history.push('/test-decks')
+        history.push('/my-decks')
     }
 
     const handleEdit = () => {
