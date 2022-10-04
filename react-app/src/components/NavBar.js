@@ -14,7 +14,7 @@ const NavBar = () => {
     sessionLinks = (
       <div className='nav-list'>
         <div>
-          <button>My decks</button>
+          <NavLink to='/my-decks'><button>My decks</button></NavLink>
           </div>
         <div>
           <ProfileButton user={sessionUser}/>

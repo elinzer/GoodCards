@@ -17,6 +17,7 @@ import DeckDetail from './components/Decks/DeckDetail';
 import EditComment from './components/Comments/EditComment';
 import SplashPage from './components/Splash/SplashPage';
 import Footer from './components/Footer/Footer';
+import MyDecks from './components/UserPages/MyDecks';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -48,18 +49,18 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
-        <ProtectedRoute path='/users/:userId' exact={true} >
-          <User />
-        </ProtectedRoute>
         <Route path='/' exact={true} >
           <SplashPage />
         </Route>
-        <Route path='/test-cards'>
+        {/* <Route path='/test-cards'>
         <Cards />
-        </Route>
+        </Route> */}
         <Route path='/decks/:id'>
           <DeckDetail />
         </Route>
+        <ProtectedRoute path='/my-decks'>
+          <MyDecks />
+        </ProtectedRoute>
         <ProtectedRoute path='/edit-comment/:id'>
           <EditComment />
         </ProtectedRoute>
