@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import Decks from '../Decks/Decks';
 import './SplashPage.css';
 import splashHeader from '../../images/mtgSplash.png';
+import defaultCard from '../../images/defaultCard.png'
 
 
 const SplashPage = () => {
@@ -27,7 +28,7 @@ const SplashPage = () => {
 
     return (
         <div className="splash-container">
-            <img className="header-image" src={splashHeader} alt=''></img>
+            <img className="header-image" src={defaultCard} alt=''></img>
             <div className="decks-container">
                 <Decks />
             </div>

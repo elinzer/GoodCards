@@ -35,6 +35,7 @@ const CommentDisplay = ({deck}) => {
     return (
         <div>
             <h4>Comments</h4>
+            <div className='post-comment'>
             <textarea
                 placeholder='Write a comment'
                 value={comment}
@@ -42,6 +43,7 @@ const CommentDisplay = ({deck}) => {
 
             />
             <button onClick={handlePost}>Post Comment</button>
+            </div>
             <ul>
                 {deckComments?.map(comment => {
                     return (
