@@ -1,0 +1,10 @@
+.comments-container {
+    display: flex;
+    border: 1px solid orange;
+    flex-direction: column;
+}
+
+.error-spot {
+    color: red;
+    border: 1px solid green;
+}
