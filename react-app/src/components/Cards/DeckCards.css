@@ -4,6 +4,10 @@
     flex-wrap: wrap;
 }
 
+.outer-deck-cards {
+    font-family: Lato;
+}
+
 .outer-card {
     display: flex;
     align-items: center;

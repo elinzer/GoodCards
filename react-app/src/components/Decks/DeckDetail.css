@@ -1,6 +1,10 @@
+body {
+    background-color: #F4F1EA;
+}
+
 .detail-container {
     border: 1px solid red;
-    margin-top: 70px;
+    margin-top: 90px;
     display: flex;
     flex-direction: column;
 }
@@ -8,31 +12,51 @@
 .deck-name-container {
     border: 1px solid blue;
     display: flex;
-    align-items: flex-start;
+    font-family: Lato;
 }
 
 .deck-name-input {
     border: none;
+    cursor: default;
+    font-size: 18px;
+    line-height: 30px;
+    border: 1px solid #cccbcb;
 }
 
-.deck-name-input {
-    cursor: default;
+.deck-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-family: Lato;
 }
 
 .deck-description {
-    border-style: none;
-    border-color: transparent;
-    resize: none;
+    border: 1px solid #cccbcb;
+    text-decoration: none;
+    width: 300px;
+    font-family: Lato;
 }
 
 .deck-description:hover {
     cursor:default;
 }
 
+.deck-description:focus,
+.deck-name-input:focus {
+    outline: none;
+}
+
 .image-n-description {
     border: 1px solid gray;
+    display: flex;
+    align-items: center;
+
 }
 
 .comment-container {
     border: 1px solid green;
+    align-self: flex-end;
+    margin-right: 50px;
 }

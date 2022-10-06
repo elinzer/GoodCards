@@ -26,6 +26,7 @@ const AddCards = ({ deck }) => {
 
     return (
         <div className="outer-add-cards">
+            <h3>Cards Available To Add To Deck:</h3>
             <ul className="deck-cards">
                 {cardsInDeck.map(card => {
                     return (

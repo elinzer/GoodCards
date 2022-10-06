@@ -67,14 +67,15 @@ const DeckDetail = () => {
                     <img style={{ maxHeight: '340px', maxWidth: '235px' }} src={currentDeck?.img_url} onError={(e) => e.target.src = defaultCard} />
                 </div>
                 <div>
-                    <textarea
+                    <label className='deck-label'>About this deck
+                    <input
                         className='deck-description'
                         ref={refTwo}
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
                         readOnly={sessionUser?.id === currentDeck?.user_id ? false : true}
                         required
-                    />
+                    /></label>
                 </div>
             <div>
                 {sessionUser?.id === currentDeck?.user_id ? (<button onClick={handleClickTwo}><i class="fa-regular fa-pen-to-square"></i></button>) : null}
