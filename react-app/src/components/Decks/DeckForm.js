@@ -9,63 +9,96 @@ const DeckForm = () => {
     const [name, setName] = useState('');
     const [coverImg, setCoverImg] = useState('');
     const [description, setDescription] = useState('');
+    const [hasSubmitted, setHasSubmitted] = useState(false);
+    const [errors, setErrors] = useState([])
     const dispatch = useDispatch();
     const history = useHistory();
 
+    useEffect(() => {
+        let errs = [];
+        if (!(coverImg.endsWith('.jpg') || coverImg.endsWith('png') || coverImg.endsWith('.jpeg'))) {
+            errs.push('Image url must end with .png/.jpeg/.jpg')
+        }
+        if (description.length < 10) {
+            errs.push('Deck description must be at least 10 characters long')
+        }
+        if (errs.length) {
+            setErrors(errs)
+        } else {
+            setErrors([])
+        }
+    },[coverImg, description])
 
     const handleSubmit = (e) => {
-        e.preventDefault()
+        e.preventDefault();
+        setHasSubmitted(true);
 
-        const deckData = {
-            name,
-            user_id: sessionUser.id,
-            description,
-            img_url: coverImg
+        if (errors.length) {
+            return
+        } else {
+            const deckData = {
+                name,
+                user_id: sessionUser.id,
+                description,
+                img_url: coverImg
+            }
+
+            dispatch(deckActions.createDeck(deckData));
+
+            setName('');
+            setCoverImg('');
+            setDescription('');
+            setErrors([]);
+            setHasSubmitted(false);
+
+            history.push('/my-decks')
         }
 
-        dispatch(deckActions.createDeck(deckData));
-
-        setName('');
-        setCoverImg('');
-        setDescription('');
-
-        history.push('/my-decks')
 
     }
 
     return (
-        <div className='outer-form-div'>
-            <form onSubmit={handleSubmit}
-                className='form-container'>
-            <label>Deck Name
-                <input
-                    className='name-input'
-                    placeholder='Deck Name'
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    required
-                ></input>
-            </label>
-            <label>Cover Image Url
-                <input
-                    className='image-input'
-                    placeholder='Image Url'
-                    value={coverImg}
-                    onChange={(e) => setCoverImg(e.target.value)}
-                    required
-                ></input>
-            </label>
-            <label>Description
-                <textarea
-                    className='description-input'
-                    placeholder='Describe your deck...'
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                    required
-                ></textarea>
-            </label>
-            <button type='submit'>Create a deck</button>
-            </form>
+        <div className='background'>
+            <div className='outer-form-div'>
+                <form onSubmit={handleSubmit}
+                    className='form-container'>
+                    {hasSubmitted && (<ul className='create-errors'>
+                        {errors.map((error, i) => {
+                            return (
+                                <li key={i}>{error}</li>
+                            )
+                        })}
+                    </ul>)}
+                    <label className='deck-label'>Deck Name:
+                        <input
+                            className='name-input'
+                            placeholder='Deck Name'
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            required
+                        ></input>
+                    </label>
+                    <label className='image-label'>Cover Image Url:
+                        <input
+                            className='image-input'
+                            placeholder='Image Url'
+                            value={coverImg}
+                            onChange={(e) => setCoverImg(e.target.value)}
+                            required
+                        ></input>
+                    </label>
+                    <label className='desc-label'>Description:
+                        <textarea
+                            className='description-input'
+                            placeholder='Describe your deck...'
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}
+                            required
+                        ></textarea>
+                    </label>
+                    <button className='create-button' type='submit'>Create a deck</button>
+                </form>
+            </div>
         </div>
     )
 }
