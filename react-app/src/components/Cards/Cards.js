@@ -12,14 +12,14 @@ const Cards = () => {
     const cardState = useSelector(state => state.cards)
     const cards = Object.values(cardState)
 
-    const addToDeck = (e, cardId) => {
-        const data = {
-            card_id: cardId,
-            deckId: 1
-        }
+    // const addToDeck = (e, cardId) => {
+    //     const data = {
+    //         card_id: cardId,
+    //         deckId: 1
+    //     }
 
-         dispatch(cardActions.addCardToDeck(data))
-    }
+    //      dispatch(cardActions.addCardToDeck(data))
+    // }
 
     return (
         <div>
