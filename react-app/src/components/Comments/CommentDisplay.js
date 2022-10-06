@@ -51,6 +51,7 @@ const CommentDisplay = ({ deck }) => {
             </ul>)}
             {sessionUser && (<div className='post-comment'>
                 <textarea
+                    className='comment-input'
                     placeholder='Write a comment'
                     value={comment}
                     onChange={(e) => setComment(e.target.value)}
@@ -58,13 +59,13 @@ const CommentDisplay = ({ deck }) => {
                 />
                 <button onClick={handlePost}>Post Comment</button>
             </div>)}
-            <ul>
+            <ul className='comments-list'>
                 {deckComments?.map(comment => {
                     return (
-                        <li key={comment?.id}>
+                        <li key={comment?.id} className='single-comment'>
                             {comment.comment_body}
                             {comment.user_id == sessionUser?.id ? (<>
-                                <NavLink to={`/edit-comment/${comment.id}`}><button>edit</button></NavLink>
+                                <NavLink className='navLink' to={`/edit-comment/${comment.id}`}><span>edit</span></NavLink>
                             </>) : null}</li>
                     )
                 })}

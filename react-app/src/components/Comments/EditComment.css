@@ -1,3 +1,42 @@
 .outer-edit-comment {
     margin-top: 70px;
+    font-family: Lato;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.inner-edit-comment {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(244, 241, 234, .5);
+    margin-top: 150px;
+    border-radius: 20px;
+    padding: 50px 20px 50px 20px;
+    font-family: Lato;
+
+}
+
+.comment-background {
+    background: url(https://media.magic.wizards.com/images/featured/EN_Chandra_Header.jpg) no-repeat center center fixed;
+    height: 900px;
+}
+
+.edit-buttons {
+    margin-top: 10px;
+}
+
+.submit-edit-button,
+.delete-comment-button {
+    margin: 0px 5px;
+}
+
+.comment-box {
+    resize: none;
+    width: 350px;
+    height: 200px;
+
 }
