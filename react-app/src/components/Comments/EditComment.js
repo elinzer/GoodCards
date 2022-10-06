@@ -10,7 +10,7 @@ const EditComment = () => {
     const sessionUser = useSelector(state => state.session.user);
     const dispatch = useDispatch()
     const history = useHistory()
-    const {id} = useParams();
+    const { id } = useParams();
     const commentState = useSelector(state => state.comments);
     const comments = Object.values(commentState);
     const thisComment = comments.find(comment => comment.id == id)
@@ -45,22 +45,29 @@ const EditComment = () => {
 
 
     return (
-        <div className="outer-edit-comment">
-            <h4>Edit Comment</h4>
-            {hasSubmitted && (<ul className='error-spot'>
-                {errors.map((error, i ) => {
-                    return (
-                        <li key={i}>{error}</li>
-                    )
-                })}
-            </ul>)}
-            <textarea
-                value={comment}
-                onChange={(e) => setComment(e.target.value)}
+        <div className="comment-background">
+            <div className="outer-edit-comment">
+                <div className="inner-edit-comment">
+                    <h4>Edit Comment</h4>
+                    {hasSubmitted && (<ul className='error-spot'>
+                        {errors.map((error, i) => {
+                            return (
+                                <li key={i}>{error}</li>
+                            )
+                        })}
+                    </ul>)}
+                    <textarea
+                        className="comment-box"
+                        value={comment}
+                        onChange={(e) => setComment(e.target.value)}
 
-            />
-            <button onClick={handleEdit}>Submit</button>
-            <button onClick={(e) => handleDelete(e, thisComment.id)}><i class="fa-regular fa-trash-can" /></button>
+                    />
+                    <div className="edit-buttons">
+                        <button className="submit-edit-button" onClick={handleEdit}>Submit</button>
+                        <button className="delete-comment-button" onClick={(e) => handleDelete(e, thisComment.id)}><i class="fa-regular fa-trash-can" /></button>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }

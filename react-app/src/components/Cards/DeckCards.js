@@ -29,11 +29,12 @@ const DeckCards = ({ deck }) => {
     }
 
     return (
-        <div>
+        <div className="outer-deck-cards">
             <div>
         {sessionUser?.id == deck.user_id && (<button onClick={() => setShowAddCards(!showAddCards)}>{showAddCards ? "Hide available cards" : "See cards available to add to your deck"}</button>)}
             {showAddCards && (<div><AddCards deck={deck}/></div>)}
             </div>
+            <div><h3>Cards in Deck ({deckCards.length}):</h3></div>
             <ul className="deck-cards">
                 {deckCards.map(card => {
                     return (

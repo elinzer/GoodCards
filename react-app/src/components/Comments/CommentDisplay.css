@@ -1,10 +1,38 @@
 .comments-container {
     display: flex;
-    border: 1px solid orange;
+    /* border: 1px solid orange; */
     flex-direction: column;
+    font-family: Lato;
+    align-items: center;
+    justify-content: center;
 }
 
 .error-spot {
     color: red;
-    border: 1px solid green;
+}
+
+.comment-input {
+    font-family: Lato;
+}
+
+.comments-list {
+    list-style: none;
+}
+
+.single-comment {
+    margin: 10px 0px;
+    padding: 20px 2px;
+    border: 1px solid gray;
+    border-radius: 15px;
+    background-color: #f8f6f3;
+}
+
+.navLink {
+    padding-left: 5px;
+    color: #382110;
+}
+
+.navLink:visited {
+    color: #382110;
+
 }
