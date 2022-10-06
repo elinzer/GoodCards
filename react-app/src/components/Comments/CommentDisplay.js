@@ -23,7 +23,6 @@ const CommentDisplay = ({ deck }) => {
         setErrors([]);
         if (!comment.length) {
             setErrors(['Comment cannot be empty'])
-            console.log(errors)
         } else {
             const commentData = {
                 user_id: sessionUser.id,
@@ -38,11 +37,6 @@ const CommentDisplay = ({ deck }) => {
         }
 
     }
-
-    const handleDelete = (e, commentId) => {
-        dispatch(commentActions.deleteCommentById(commentId))
-    }
-
 
 
     return (
@@ -71,7 +65,6 @@ const CommentDisplay = ({ deck }) => {
                             {comment.comment_body}
                             {comment.user_id == sessionUser?.id ? (<>
                                 <NavLink to={`/edit-comment/${comment.id}`}><button>edit</button></NavLink>
-                                <button onClick={(e) => handleDelete(e, comment.id)}><i class="fa-regular fa-trash-can" /></button>
                             </>) : null}</li>
                     )
                 })}

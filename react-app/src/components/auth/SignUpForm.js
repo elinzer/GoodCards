@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { NavLink, Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
@@ -12,16 +12,40 @@ const SignUpForm = () => {
   const [repeatPassword, setRepeatPassword] = useState('');
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
+  const [hasSubmitted, setHasSubmitted] = useState(false)
+
+  let errs = [];
+
+  useEffect(() => {
+    if (email.length < 3 || !(email.includes('.com') || email.includes('.co') || email.includes('.io') || email.includes('.net'))) errs.push('Email must be valid email');
+    if (repeatPassword != password) errs.push('Passwords must match')
+    if (errs.length) {
+      setErrors(errs)
+    } else {
+      setErrors([])
+    }
+  }, [email, repeatPassword, username])
+
+  console.log(password)
+  console.log(repeatPassword)
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    if (password === repeatPassword) {
+    setHasSubmitted(true);
+    if (errors.length) {
+      return
+    } else {
       const data = await dispatch(signUp(username, email, password));
-      if (data) {
-        setErrors(data)
+      if (data || data.errors) {
+        console.log(data)
+        setErrors([data])
+      } else {
+        setHasSubmitted(false);
+        console.log('do u get here')
+        setErrors([]);
       }
     }
-  };
+  }
 
   const updateUsername = (e) => {
     setUsername(e.target.value);
@@ -45,55 +69,60 @@ const SignUpForm = () => {
 
   return (
     <div className='signup-form-container'>
-    <form onSubmit={onSignUp} className='signup-form'>
+      <form onSubmit={onSignUp} className='signup-form'>
+        <ul>
+          {hasSubmitted && errors.map((error, ind) => {
+            return (
+              <li className='error-lis' key={ind}>{error}</li>
+            )
+          })}
+        </ul>
+        <div>
+          <label>User Name</label>
+          <input
+            type='text'
+            name='username'
+            onChange={updateUsername}
+            value={username}
+            required
+          ></input>
+        </div>
+        <div>
+          <label>Email</label>
+          <input
+            type='text'
+            name='email'
+            onChange={updateEmail}
+            value={email}
+            required
+          ></input>
+        </div>
+        <div>
+          <label>Password</label>
+          <input
+            type='password'
+            name='password'
+            onChange={updatePassword}
+            value={password}
+            required
+          ></input>
+        </div>
+        <div>
+          <label>Repeat Password</label>
+          <input
+            type='password'
+            name='repeat_password'
+            onChange={updateRepeatPassword}
+            value={repeatPassword}
+            required={true}
+          ></input>
+        </div>
+        <button type='submit'>Sign Up</button>
+      </form>
       <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
+        Already have an account?
+        <NavLink to='/login'>Sign in</NavLink>
       </div>
-      <div>
-        <label>User Name</label>
-        <input
-          type='text'
-          name='username'
-          onChange={updateUsername}
-          value={username}
-        ></input>
-      </div>
-      <div>
-        <label>Email</label>
-        <input
-          type='text'
-          name='email'
-          onChange={updateEmail}
-          value={email}
-        ></input>
-      </div>
-      <div>
-        <label>Password</label>
-        <input
-          type='password'
-          name='password'
-          onChange={updatePassword}
-          value={password}
-        ></input>
-      </div>
-      <div>
-        <label>Repeat Password</label>
-        <input
-          type='password'
-          name='repeat_password'
-          onChange={updateRepeatPassword}
-          value={repeatPassword}
-          required={true}
-        ></input>
-      </div>
-      <button type='submit'>Sign Up</button>
-    </form>
-    <div>
-      Already have an account?
-      <NavLink to='/login'>Sign in</NavLink>
-    </div>
     </div>
   );
 };

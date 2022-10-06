@@ -54,9 +54,6 @@ function App() {
         <Route path='/' exact={true} >
           <SplashPage />
         </Route>
-        {/* <Route path='/test-cards'>
-        <Cards />
-        </Route> */}
         <Route path='/decks/:id'>
           <DeckDetail />
         </Route>
@@ -65,9 +62,6 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/create-deck'>
           <DeckForm />
-        </ProtectedRoute>
-        <ProtectedRoute path='/add-cards'>
-          <AddCards />
         </ProtectedRoute>
         <ProtectedRoute path='/edit-comment/:id'>
           <EditComment />
