@@ -22,12 +22,18 @@ const DeckForm = () => {
         if (description.length < 10) {
             errs.push('Deck description must be at least 10 characters long')
         }
+        if (description.length > 200) {
+            errs.push('Deck description must be less than 200 characters long')
+        }
+        if (name.length > 25) {
+            errs.push('Deck name cannot be greater than 25 characters')
+        }
         if (errs.length) {
             setErrors(errs)
         } else {
             setErrors([])
         }
-    },[coverImg, description])
+    },[coverImg, description, name])
 
     const handleSubmit = (e) => {
         e.preventDefault();

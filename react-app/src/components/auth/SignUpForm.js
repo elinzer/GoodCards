@@ -19,6 +19,9 @@ const SignUpForm = () => {
   useEffect(() => {
     if (email.length < 3 || !(email.includes('.com') || email.includes('.co') || email.includes('.io') || email.includes('.net'))) errs.push('Email must be valid email');
     if (repeatPassword != password) errs.push('Passwords must match')
+    if (username.length > 20) {
+      errs.push('Username cannot be greater than 20 characters')
+    }
     if (errs.length) {
       setErrors(errs)
     } else {
@@ -32,11 +35,11 @@ const SignUpForm = () => {
   const onSignUp = async (e) => {
     e.preventDefault();
     setHasSubmitted(true);
-    if (errors.length) {
+    if (errors?.length) {
       return
     } else {
       const data = await dispatch(signUp(username, email, password));
-      if (data || data.errors) {
+      if (data || data?.errors) {
         console.log(data)
         setErrors([data])
       } else {
@@ -69,59 +72,67 @@ const SignUpForm = () => {
 
   return (
     <div className='signup-form-container'>
-      <form onSubmit={onSignUp} className='signup-form'>
-        <ul>
-          {hasSubmitted && errors.map((error, ind) => {
-            return (
-              <li className='error-lis' key={ind}>{error}</li>
-            )
-          })}
-        </ul>
+      <div className='form-n-link'>
+        <form onSubmit={onSignUp} className='signup-form'>
+          <ul>
+            {hasSubmitted && errors.map((error, ind) => {
+              return (
+                <li className='error-lis' key={ind}>{error}</li>
+              )
+            })}
+          </ul>
+          <div className='name-div'>
+            <label>User Name</label>
+            <input
+              className='sign-input'
+              type='text'
+              name='username'
+              onChange={updateUsername}
+              value={username}
+              required
+            ></input>
+          </div>
+          <div className='email-div'>
+            <label>Email</label>
+            <input
+              className='sign-input'
+              type='text'
+              name='email'
+              onChange={updateEmail}
+              value={email}
+              required
+            ></input>
+          </div>
+          <div className='password-div'>
+            <label>Password</label>
+            <input
+              className='sign-input'
+              type='password'
+              name='password'
+              onChange={updatePassword}
+              value={password}
+              required
+            ></input>
+          </div>
+          <div className='repeat-div'>
+            <label>Repeat Password</label>
+            <input
+              className='sign-input'
+              type='password'
+              name='repeat_password'
+              onChange={updateRepeatPassword}
+              value={repeatPassword}
+              required={true}
+            ></input>
+          </div>
+          <div className='button-div'>
+            <button className='signup-button' type='submit'>Sign Up</button>
+          </div>
+        </form>
         <div>
-          <label>User Name</label>
-          <input
-            type='text'
-            name='username'
-            onChange={updateUsername}
-            value={username}
-            required
-          ></input>
+          Already have an account?
+          <NavLink className='to-log' to='/login'>Sign in</NavLink>
         </div>
-        <div>
-          <label>Email</label>
-          <input
-            type='text'
-            name='email'
-            onChange={updateEmail}
-            value={email}
-            required
-          ></input>
-        </div>
-        <div>
-          <label>Password</label>
-          <input
-            type='password'
-            name='password'
-            onChange={updatePassword}
-            value={password}
-            required
-          ></input>
-        </div>
-        <div>
-          <label>Repeat Password</label>
-          <input
-            type='password'
-            name='repeat_password'
-            onChange={updateRepeatPassword}
-            value={repeatPassword}
-            required={true}
-          ></input>
-        </div>
-        <button type='submit'>Sign Up</button>
-      </form>
-      <div>
-        Already have an account?
-        <NavLink to='/login'>Sign in</NavLink>
       </div>
     </div>
   );

@@ -33,40 +33,44 @@ const LoginForm = () => {
 
   return (
     <div className='login-form-container'>
-    <form onSubmit={onLogin} className='login-form'>
-      <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
+      <div className='form-and-link'>
+        <form onSubmit={onLogin} className='login-form'>
+          <div>
+            {errors.map((error, ind) => (
+              <div key={ind} className='error-spot'>{error}</div>
+            ))}
+          </div>
+          <div>
+            <label htmlFor='email' className='login-label'>Email</label>
+            <input
+              name='email'
+              type='text'
+              placeholder='Email'
+              value={email}
+              onChange={updateEmail}
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor='password' className='login-label'>Password</label>
+            <input
+              name='password'
+              type='password'
+              placeholder='Password'
+              value={password}
+              onChange={updatePassword}
+              required
+            />
+            <div className='login-button-div'>
+              <button type='submit'>Login</button>
+            </div>
+          </div>
+        </form>
+        <div>
+          Need to sign up?
+          <NavLink to='/sign-up'>Sign up</NavLink>
+        </div>
       </div>
-      <div>
-        <label htmlFor='email'>Email</label>
-        <input
-          name='email'
-          type='text'
-          placeholder='Email'
-          value={email}
-          onChange={updateEmail}
-          required
-        />
-      </div>
-      <div>
-        <label htmlFor='password'>Password</label>
-        <input
-          name='password'
-          type='password'
-          placeholder='Password'
-          value={password}
-          onChange={updatePassword}
-          required
-        />
-        <button type='submit'>Login</button>
-      </div>
-    </form>
-    <div>
-      Need to sign up?
-      <NavLink to='/sign-up'>Sign up</NavLink>
-    </div>
     </div>
   );
 };

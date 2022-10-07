@@ -17,15 +17,11 @@ const DeckDetail = () => {
     const deckState = useSelector(state => state.decks)
     const deckList = Object.values(deckState);
     let currentDeck = deckList?.find(deck => deck.id == id);
-    let myDeck = sessionUser?.id == currentDeck?.id
+    let myDeck = sessionUser?.id === currentDeck?.user_id
     const [deckName, setDeckName] = useState(currentDeck?.name);
     const [description, setDescription] = useState(currentDeck?.description);
     const [imageUrl, setImageUrl] = useState(currentDeck?.img_url)
     const [changesMade, setChangesMade] = useState(false)
-
-    // useEffect(() => {
-    //     setChangesMade(true)
-    // }, [deckName, description, imageUrl])
 
     const handleDelete = () => {
         dispatch(deckActions.deleteDeckById(currentDeck?.id))
