@@ -39,16 +39,28 @@
     margin: 10px 2px;
 }
 
+.sign-input:focus {
+    outline: none;
+    background-color: rgb(255, 255, 255);
+}
+
 .signup-button {
     background-color: #1E1915;
     line-height: 20px;
     border-radius: 20px;
     color: white;
-    margin-top: 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
     padding: 5px 10px;
     font-size: 14px;
 }
 
 .to-log {
-    font-weight: bold;
+    margin-left: 5px;
+    text-decoration: none;
+    color: rgb(62, 23, 23);
+}
+
+.to-log:hover {
+    text-decoration: underline;
 }

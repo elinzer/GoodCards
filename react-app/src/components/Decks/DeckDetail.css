@@ -7,6 +7,7 @@ body {
     margin-top: 90px;
     display: flex;
     flex-direction: column;
+    padding: 0px 50px;
 }
 
 .deck-name-container {
