@@ -1,18 +1,54 @@
 .signup-form-container {
-    border: 1px solid red;
+    background: url(https://media.magic.wizards.com/images/wallpaper/wrenn-and-six-2x2-background-1920x1080.jpg) no-repeat fixed;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-top: 150px;
+    margin-top: 70px;
     align-items: center;
+    height: 900px;
 }
 
-.signup-form {
-    border: 1px solid blue;
+.form-n-link {
     display: flex;
     flex-direction: column;
+    background-color: rgb(244, 241, 234, .5);
+    border-radius: 20px;
+    padding: 50px 40px 50px 40px;
+    font-family: Lato;
 }
 
 .error-lis {
     color: red;
+}
+
+.name-div,
+.email-div,
+.password-div,
+.repeat-div,
+.button-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sign-input {
+    line-height: 23px;
+    padding: 5px 20px;
+    border-radius: 24px;
+    margin: 10px 2px;
+}
+
+.signup-button {
+    background-color: #1E1915;
+    line-height: 20px;
+    border-radius: 20px;
+    color: white;
+    margin-top: 20px;
+    padding: 5px 10px;
+    font-size: 14px;
+}
+
+.to-log {
+    font-weight: bold;
 }

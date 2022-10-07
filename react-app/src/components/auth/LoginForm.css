@@ -1,14 +1,28 @@
 .login-form-container{
-    border: 1px solid red;
+    background: url(https://media.magic.wizards.com/images/featured/PW_ArlinnKord_preloader.jpg) no-repeat fixed;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 150px;
+    margin-top: 70px;
+    height: 900px;
+    font-family: Lato;
 }
 
-.login-form {
-    border: 1px solid blue;
+.form-and-link {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 70px 40px 50px 40px;
+    background-color: rgb(244, 241, 234, .5);
+    border-radius: 20px;
+}
+
+.login-label,
+.login-button-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

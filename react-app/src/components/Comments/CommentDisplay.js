@@ -23,6 +23,8 @@ const CommentDisplay = ({ deck }) => {
         setErrors([]);
         if (!comment.length) {
             setErrors(['Comment cannot be empty'])
+        } else if (comment.length > 200) {
+            setErrors(['Comment cannot be greater than 200 characters'])
         } else {
             const commentData = {
                 user_id: sessionUser.id,
