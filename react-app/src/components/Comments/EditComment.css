@@ -32,11 +32,27 @@
 .submit-edit-button,
 .delete-comment-button {
     margin: 0px 5px;
+    color: #333333;
+    border: 1px solid #333333;
+    cursor: pointer;
+    padding: 4px 12px;
+    border-radius: 10px;
+}
+
+.submit-edit-button:hover,
+.delete-comment-button:hover {
+    background-color: #333333;
+    color: white;
 }
 
 .comment-box {
     resize: none;
     width: 350px;
-    height: 200px;
+    height: 170px;
+    border-radius: 15px;
+    padding: 5px 5px;
+}
 
+.comment-box:focus {
+    outline: none;
 }

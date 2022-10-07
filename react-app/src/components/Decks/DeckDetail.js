@@ -112,17 +112,19 @@ const DeckDetail = () => {
                     {myDeck ? (<button onClick={handleClickOne}><i class="fa-regular fa-pen-to-square"></i></button>) : null}
                 </div>
             </div>
-            <div className='image-n-description'>
-                <div>
-                    <img
-                        onClick={() => setShowImgUrl(!showImgUrl)}
-                        style={{ maxHeight: '340px', maxWidth: '235px' }} src={currentDeck?.img_url} onError={(e) => e.target.src = defaultCard} />
-                    {myDeck && (<div>Click cover to edit</div>)}
+            <div className='outer-image-n-description'>
+                <div className='inner-img-n-desc'>
+                    <div className='img-n-edit'>
+                        <img className='cover-img'
+                            onClick={() => setShowImgUrl(!showImgUrl)}
+                            style={{ maxHeight: '340px', maxWidth: '235px' }} src={currentDeck?.img_url} onError={(e) => e.target.src = defaultCard} />
+                        {myDeck && (<div>click cover image to edit</div>)}
                     {showImgUrl && myDeck && (
                         <div><input
                             value={imageUrl}
                             onChange={(e) => { setChangesMade(true); setImageUrl(e.target.value) }}
                         /></div>)}
+                    </div>
                 </div>
 
                 <div>

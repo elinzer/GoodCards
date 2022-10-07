@@ -28,6 +28,7 @@
     border: none;
     cursor: pointer;
     padding: 0px 0px;
+    background-color: #F4F1EA;
 }
 
 .remove-card:hover {
@@ -39,4 +40,5 @@
     cursor: pointer;
     padding: 0px 0px;
     text-decoration: underline;
+    background-color: #F4F1EA;
 }
