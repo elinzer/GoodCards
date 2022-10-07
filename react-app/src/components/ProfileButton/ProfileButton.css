@@ -1,10 +1,12 @@
 .profile-button {
     font-size: 16px;
-    line-height: 50px;
+    line-height: 68px;
     border: none;
     background-color: #F4F1EA;
     color: #382110;
-    width: 50px;
+    width: 65px;
+    /* position: fixed; */
+    margin-right: 50px;
 }
 
 .profile-button:hover {
@@ -15,9 +17,39 @@
     background-color: #382110;
 }
 
+/* .profile-button:visited {
+    background-color: #F4F1EA;
+} */
+
 .prof-icon {
     border: 1px solid lightgrey;
     padding: 5px;
     border-radius: 15px;
     background-color: #F4F1EA;
+}
+
+.hello,
+.logout {
+    background-color: #F4F1EA;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 5px;
+    border-bottom: 1px solid #cccbcb;
+    border-left: 1px solid #cccbcb;
+    border-right: 1px solid #cccbcb;
+}
+
+.logout-button {
+    border: none;
+    background-color: #F4F1EA;
+    font-size: 16px;
+    font-family: Lato;
+    cursor: pointer;
+    padding: 0px 14px;
+}
+
+.drop-down {
+    /* border: 1px solid #cccbcb; */
+    box-shadow: 2px 2px 2px 1px #cccbcb ;
 }

@@ -23,22 +23,19 @@ const NavBar = () => {
   } else {
     sessionLinks = (
       <div className='nav-list'>
-        <div>
           <NavLink to='/login' exact={true} activeClassName='active'>
-           <button>Log in</button>
+            <button className='login-nav'>Log in</button>
           </NavLink>
-        </div>
-        <div>
         <NavLink to='/sign-up' exact={true} activeClassName='active'>
-                    <button>Sign Up</button>
-                </NavLink>
-        </div>
+          <button className='signup-nav'>Sign Up</button>
+        </NavLink>
       </div>
     )
   }
 
 
   return (
+    <div className='outer-nav'>
     <nav className='nav-container'>
       <div>
         <NavLink to='/' exact={true} activeClassName='active'>
@@ -51,6 +48,7 @@ const NavBar = () => {
 
 
     </nav>
+    </div>
   );
 }
 

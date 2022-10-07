@@ -33,11 +33,11 @@ const ProfileButton = ({ user }) => {
                     <i className="prof-icon fa-regular fa-user"></i></button>
             </div>
             {showMenu && (
-                <div>
-                    <div>
+                <div className="drop-down">
+                    <div className="hello">
                         Hello, {user.username}!
                     </div>
-                    <div>
+                    <div className="logout">
                         <LogoutButton />
                     </div>
                 </div>)}
