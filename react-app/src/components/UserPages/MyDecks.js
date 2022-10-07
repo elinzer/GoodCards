@@ -14,23 +14,35 @@ const MyDecks = () => {
 
     return (
         <div className='my-deck-container'>
-            <div>
-                <NavLink to='create-deck'>New Deck</NavLink>
+            <div className='new-deck-link'>
+                <h2 style={{fontWeight: 'bold'}}>My Decks</h2>
+                <NavLink to='create-deck'><button className='new-deck-butt'>New Deck</button></NavLink>
             </div>
             <div className='inner-deck-container'>
-                {myDecks.map(deck => {
-                    return (
-                        <>
-                            <div>
-                                <NavLink to={`/decks/${deck.id}`}>
-                                <img className='preview-img'
-                                src={deck.img_url}
-                                onError={(e) => e.target.src = defaultCard} /></NavLink>
-                                </div>
-                            <div>{deck.name}</div>
-                        </>
-                    )
-                })}
+                <table>
+                    <tr>
+                        <th>Cover</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Date Added</th>
+                    </tr>
+                    {myDecks.map(deck => {
+                        let createdAt = new Date(deck.created_at)
+                        return (
+                            <>
+                                <tr>
+                                    <td className='img-box'><NavLink to={`/decks/${deck.id}`}>
+                                        <img className='cover-img'
+                                            src={deck.img_url}
+                                            onError={(e) => e.target.src = defaultCard} /></NavLink></td>
+                                <td className='name-box' >{deck.name}</td>
+                                <td className='desc-box'>{deck.description}</td>
+                                <td className='time-box'>{createdAt.toDateString()}</td>
+                                </tr>
+                            </>
+                        )
+                    })}
+                </table>
             </div>
         </div>
     )

@@ -1,9 +1,60 @@
 .my-deck-container {
-    border: 1px solid red;
+    /* border: 1px solid red; */
     margin-top: 70px;
+    font-family: Lato;
+    padding-bottom: 50px;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.inner-deck-container {
+.cover-img {
+    max-height: 300px;
+    max-width: 195px;
+    border: 1px solid black;
+    border-radius: 15px;
+}
+
+.new-deck-link {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 4px;
+}
+
+.new-deck-butt {
+    margin-left: 50px;
+    color: #333333;
+    border: 1px solid #D6D0C4;
+    cursor: pointer;
+    padding: 4px 12px;
+    border-radius: 10px;
+}
+
+.new-deck-butt:hover {
+    background-color: #333333;
+    color: white;
+}
+
+table {
+    table-layout: fixed;
+}
+
+th {
+    text-decoration: underline;
+}
+
+td {
+    padding: 2px 10px;
+    word-wrap: break-word;
+    border-bottom: 1px solid #cccccc;
+}
+
+.name-box {
+    font-weight: bold;
+}
+
+.desc-box {
+    max-width: 300px;
 }

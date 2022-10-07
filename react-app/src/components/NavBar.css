@@ -1,8 +1,13 @@
+/* .outer-nav {
+    margin: 0 0 1em 0;
+} */
+
 .nav-container {
     background-color: #F4F1EA;
     position: fixed;
     top: 0;
-    max-width: 1761px;
+    margin: 0 0 1em 0;
+    /* max-width: 1761px; */
     width: 100%;
     height: 70px;
     z-index: 1;
@@ -10,18 +15,21 @@
     justify-content: space-between;
     font-family: Lato;
     border-bottom: 1px solid #cccbcb;
+    /* border: 1px solid red; */
 }
 
 .nav-list {
     list-style: none;
     display: flex;
-    justify-content: space-around;
-    border: 1px solid green;
-    width: 900px;
+    justify-content: space-between;
+    /* border: 1px solid green; */
+    width: 200px;
+    height: 70px;
+    margin-right: 50px;
 }
 
 .my-decks-button {
-    line-height: 50px;
+    line-height: 68px;
     border: none;
     font-size: 16px;
     background-color: #F4F1EA;
@@ -30,6 +38,24 @@
 }
 
 .my-decks-button:hover {
+    background-color: #382110;
+    color: #F4F1EA;
+}
+
+.login-nav,
+.signup-nav {
+    height: 69px;
+    border: none;
+    font-size: 16px;
+    background-color: #F4F1EA;
+    color: #382110;
+    cursor: pointer;
+    width: 80px;
+    font-size: 18px;
+}
+
+.login-nav:hover,
+.signup-nav:hover {
     background-color: #382110;
     color: #F4F1EA;
 }
