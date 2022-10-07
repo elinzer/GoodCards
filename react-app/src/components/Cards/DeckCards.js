@@ -31,7 +31,7 @@ const DeckCards = ({ deck }) => {
     return (
         <div className="outer-deck-cards">
             <div>
-        {sessionUser?.id == deck.user_id && (<button onClick={() => setShowAddCards(!showAddCards)}>{showAddCards ? "Hide available cards" : "See cards available to add to your deck"}</button>)}
+        {sessionUser?.id == deck.user_id && (<button className="toggle-cards" onClick={() => setShowAddCards(!showAddCards)}>{showAddCards ? "Hide available cards" : "See cards available to add to your deck"}</button>)}
             {showAddCards && (<div><AddCards deck={deck}/></div>)}
             </div>
             <div><h3>Cards in Deck ({deckCards.length}):</h3></div>
@@ -43,7 +43,7 @@ const DeckCards = ({ deck }) => {
                             <img
                                 className="cards-in-deck"
                                 src={card.img_url} onError={(e) => e.target.src = defaultCard}/>
-                                {deck.user_id == sessionUser?.id ? (<button onClick={() => removeCard(deck.id, card.id)}>Remove Card</button>) : null }
+                                {deck.user_id == sessionUser?.id ? (<button className="remove-card" onClick={() => removeCard(deck.id, card.id)}>Remove Card</button>) : null }
                                 </li>
                     )
                 })}

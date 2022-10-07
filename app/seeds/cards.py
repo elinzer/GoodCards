@@ -4,7 +4,7 @@ from mtgsdk import Card
 from random import choice
 
 def seed_cards():
-    cards = Card.where(set='afr').where(page=1).where(pageSize=70).array()
+    cards = Card.where(set='afr').where(page=1).where(pageSize=100).array()
 
     deck1 = Deck.query.get(1)
     deck2 = Deck.query.get(2)

@@ -8,6 +8,9 @@ body {
     display: flex;
     flex-direction: column;
     padding: 0px 50px;
+    padding-bottom: 50px;
+    justify-content: center;
+    align-items: center;
 }
 
 .deck-name-container {
@@ -36,7 +39,7 @@ body {
 .deck-description {
     border: 1px solid #cccbcb;
     text-decoration: none;
-    width: 300px;
+    width: 600px;
     font-family: Lato;
 }
 
@@ -58,6 +61,6 @@ body {
 
 .comment-container {
     border: 1px solid green;
-    align-self: flex-end;
+    align-self: center;
     margin-right: 50px;
 }

@@ -61,17 +61,17 @@ const CommentDisplay = ({ deck }) => {
                 />
                 <button onClick={handlePost}>Post Comment</button>
             </div>)}
-            <ul className='comments-list'>
+            <div className='comments-list'>
                 {deckComments?.map(comment => {
                     return (
-                        <li key={comment?.id} className='single-comment'>
+                        <div key={comment?.id} className='single-comment'>
                             {comment.comment_body}
                             {comment.user_id == sessionUser?.id ? (<>
                                 <NavLink className='navLink' to={`/edit-comment/${comment.id}`}><span>edit</span></NavLink>
-                            </>) : null}</li>
+                            </>) : null}</div>
                     )
                 })}
-            </ul>
+            </div>
         </div>
     )
 }
