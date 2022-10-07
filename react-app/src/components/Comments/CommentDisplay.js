@@ -59,13 +59,15 @@ const CommentDisplay = ({ deck }) => {
                     onChange={(e) => setComment(e.target.value)}
 
                 />
-                <button onClick={handlePost}>Post Comment</button>
+                <button className='post-button' onClick={handlePost}>Post Comment</button>
             </div>)}
             <div className='comments-list'>
                 {deckComments?.map(comment => {
+                    let createdAt = new Date(comment.created_at)
                     return (
                         <div key={comment?.id} className='single-comment'>
-                            {comment.comment_body}
+                            <div className='comment-body'>{comment.comment_body}</div>
+                            <div className='comment-time'>posted on {createdAt.toDateString()}</div>
                             {comment.user_id == sessionUser?.id ? (<>
                                 <NavLink className='navLink' to={`/edit-comment/${comment.id}`}><span>edit</span></NavLink>
                             </>) : null}</div>

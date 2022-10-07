@@ -63,8 +63,9 @@ const EditComment = () => {
 
                     />
                     <div className="edit-buttons">
-                        <button className="submit-edit-button" onClick={handleEdit}>Submit</button>
-                        <button className="delete-comment-button" onClick={(e) => handleDelete(e, thisComment.id)}><i class="fa-regular fa-trash-can" /></button>
+                        <button className="submit-edit-button" onClick={handleEdit}>Save Changes</button>
+                        <button className="delete-comment-button" onClick={(e) => handleDelete(e, thisComment.id)}>Delete
+                        </button>
                     </div>
                 </div>
             </div>

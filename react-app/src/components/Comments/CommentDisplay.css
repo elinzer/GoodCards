@@ -42,7 +42,10 @@
     padding: 20px 2px;
     border: 1px solid gray;
     border-radius: 15px;
-    background-color: #f8f6f3;
+    /* background-color: #f8f6f3; */
+    width: 600px;
+    max-width: 600px;
+    min-width: 600px;
 }
 
 .navLink {
@@ -53,4 +56,30 @@
 .navLink:visited {
     color: #382110;
 
+}
+
+.comment-body {
+    background-color: white;
+    width: fit-content;
+    border-radius: 5px;
+    padding: 5px 5px;
+}
+
+.comment-time {
+    font-style: italic;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.post-button {
+    color: #333333;
+    border: 1px solid #D6D0C4;
+    cursor: pointer;
+    padding: 4px 12px;
+    border-radius: 10px;
+}
+
+.post-button:hover {
+    background-color: #333333;
+    color: white;
 }
