@@ -43,6 +43,7 @@ const LoginForm = () => {
           <div>
             <label htmlFor='email' className='login-label'>Email</label>
             <input
+              className='login-input'
               name='email'
               type='text'
               placeholder='Email'
@@ -54,6 +55,7 @@ const LoginForm = () => {
           <div>
             <label htmlFor='password' className='login-label'>Password</label>
             <input
+              className='login-input'
               name='password'
               type='password'
               placeholder='Password'
@@ -62,13 +64,13 @@ const LoginForm = () => {
               required
             />
             <div className='login-button-div'>
-              <button type='submit'>Login</button>
+              <button className='login-button' type='submit'>Login</button>
             </div>
           </div>
         </form>
-        <div>
-          Need to sign up?
-          <NavLink to='/sign-up'>Sign up</NavLink>
+        <div className='link-div'>
+          Don't have an account?
+          <NavLink className='to-sign' to='/sign-up'>Sign up</NavLink>
         </div>
       </div>
     </div>

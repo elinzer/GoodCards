@@ -26,3 +26,36 @@
     justify-content: center;
     align-items: center;
 }
+
+.login-input {
+    line-height: 23px;
+    padding: 5px 20px;
+    border-radius: 24px;
+    margin: 10px 2px;
+}
+
+.login-input:focus {
+    outline: none;
+    background-color: rgb(255, 255, 255);
+}
+
+.login-button {
+    background-color: #1E1915;
+    line-height: 20px;
+    border-radius: 20px;
+    color: white;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 5px 10px;
+    font-size: 14px;
+}
+
+.to-sign {
+    text-decoration: none;
+    margin-left: 5px;
+    color: rgb(62, 23, 23);
+}
+
+.to-sign:hover {
+    text-decoration: underline;
+}
