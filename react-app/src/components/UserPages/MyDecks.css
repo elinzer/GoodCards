@@ -53,6 +53,7 @@ td {
 
 .name-box {
     font-weight: bold;
+    max-width: 200px;
 }
 
 .desc-box {

@@ -1,18 +1,36 @@
 .comments-container {
     display: flex;
-    /* border: 1px solid orange; */
     flex-direction: column;
     font-family: Lato;
     align-items: center;
     justify-content: center;
 }
 
+.post-comment {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .error-spot {
     color: red;
+    list-style: none;
 }
 
 .comment-input {
     font-family: Lato;
+    resize: none;
+    border-radius: 10px;
+    max-width: 300px;
+    width: 300px;
+    min-width: 300px;
+    padding: 5px 5px;
+    margin-bottom: 5px;
+}
+
+.comment-input:focus {
+    outline: none;
 }
 
 .comments-list {

@@ -23,6 +23,27 @@ const DeckDetail = () => {
     const [imageUrl, setImageUrl] = useState(currentDeck?.img_url);
     const [changesMade, setChangesMade] = useState(false);
     const [showImgUrl, setShowImgUrl] = useState(false);
+    const [errors, setErrors] = useState([]);
+    const [hasSubmitted, setHasSubmitted] = useState(false);
+
+    useEffect(() => {
+        let errs = [];
+
+        if (!deckName.length) errs.push("Deck name can't be blank")
+        if (deckName.length > 25) errs.push("Deck name can't be greater than 25 characters")
+        if (!description.length) errs.push("Description can't be blank")
+        if (description.length > 200) errs.push('Deck description must be less than 200 characters long')
+        if (!(imageUrl.endsWith('.jpg') || imageUrl.endsWith('png') || imageUrl.endsWith('.jpeg'))) errs.push('Image url must end with .png/.jpeg/.jpg')
+        if (!imageUrl.length) errs.push("Image url can't be blank")
+        if (errs.length) {
+            setErrors(errs)
+        } else {
+            setErrors([])
+        }
+
+
+    }, [imageUrl, description, deckName])
+
 
     const handleDelete = () => {
         dispatch(deckActions.deleteDeckById(currentDeck?.id))
@@ -30,16 +51,25 @@ const DeckDetail = () => {
     }
 
     const handleEdit = () => {
-        const editInfo = {
-            name: deckName,
-            user_id: sessionUser.id,
-            description: description,
-            img_url: imageUrl
+
+        setHasSubmitted(true);
+
+        if (errors.length) {
+            return
+        } else {
+            const editInfo = {
+                name: deckName,
+                user_id: sessionUser.id,
+                description: description,
+                img_url: imageUrl
+            }
+
+            dispatch(deckActions.editDeck(editInfo, currentDeck?.id))
+            setChangesMade(false)
+            setShowImgUrl(false)
+            setHasSubmitted(false)
         }
 
-        dispatch(deckActions.editDeck(editInfo, currentDeck?.id))
-        setChangesMade(false)
-        setShowImgUrl(false)
     }
 
     const handleClickOne = () => {
@@ -52,6 +82,23 @@ const DeckDetail = () => {
 
     return (
         <div className='detail-container'>
+            <div className='edit-n-delete'>
+                <div>
+                    {myDeck ? (<button onClick={handleDelete}>Delete Deck</button>) : null}
+                </div>
+                <div className='save-changes'>{changesMade && myDeck ? (<button onClick={handleEdit}>Save changes</button>) : null}</div>
+                <div>
+                    {myDeck && hasSubmitted && (
+                        <ul>
+                            {errors.map((error, ind) => {
+                                return (
+                                    <li key={ind}>{error}</li>
+                                )
+                            })}
+                        </ul>
+                    )}
+                </div>
+            </div>
             <div className='deck-name-container'>
                 <input
                     className='deck-name-input'
@@ -64,19 +111,18 @@ const DeckDetail = () => {
                 <div>
                     {myDeck ? (<button onClick={handleClickOne}><i class="fa-regular fa-pen-to-square"></i></button>) : null}
                 </div>
-                <div className='save-changes'>{changesMade && myDeck ? (<button onClick={handleEdit}>Save changes</button>) : null}</div>
             </div>
             <div className='image-n-description'>
                 <div>
                     <img
-                    onClick={() => setShowImgUrl(!showImgUrl)}
-                    style={{ maxHeight: '340px', maxWidth: '235px' }} src={currentDeck?.img_url} onError={(e) => e.target.src = defaultCard} />
-                    {myDeck && (<div>Click Image to edit</div>)}
+                        onClick={() => setShowImgUrl(!showImgUrl)}
+                        style={{ maxHeight: '340px', maxWidth: '235px' }} src={currentDeck?.img_url} onError={(e) => e.target.src = defaultCard} />
+                    {myDeck && (<div>Click cover to edit</div>)}
                     {showImgUrl && myDeck && (
                         <div><input
                             value={imageUrl}
                             onChange={(e) => { setChangesMade(true); setImageUrl(e.target.value) }}
-                            /></div>)}
+                        /></div>)}
                 </div>
 
                 <div>
@@ -93,12 +139,6 @@ const DeckDetail = () => {
                 <div>
                     {myDeck ? (<button onClick={handleClickTwo}><i class="fa-regular fa-pen-to-square"></i></button>) : null}
                 </div>
-            </div>
-            <div>
-                {myDeck ? (
-                    <>
-                        <button onClick={handleDelete}>Delete Deck</button>
-                    </>) : null}
             </div>
             <div className='comment-container'>
                 <CommentDisplay deck={currentDeck} />

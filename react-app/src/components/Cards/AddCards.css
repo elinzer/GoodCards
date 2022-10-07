@@ -1,3 +1,13 @@
 .outer-add-cards {
     font-family: Lato;
 }
+
+.add-card {
+    border: none;
+    cursor: pointer;
+    padding: 0px 0px;
+}
+
+.add-card:hover {
+    text-decoration: underline;
+}
