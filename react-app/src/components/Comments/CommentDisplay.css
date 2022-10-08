@@ -17,6 +17,8 @@
 .error-spot {
     color: red;
     list-style: none;
+    font-size: 13px;
+    font-style: italic;
 }
 
 .comment-input {
@@ -28,6 +30,7 @@
     min-width: 300px;
     padding: 5px 5px;
     margin-bottom: 5px;
+    overflow: hidden;
 }
 
 .comment-input:focus {
@@ -60,7 +63,6 @@
 }
 
 .comment-body {
-    /* width: fit-content; */
     border-radius: 5px;
     padding: 5px 5px;
     background-color: white;

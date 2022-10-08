@@ -6,6 +6,7 @@ import * as deckActions from '../../store/deck';
 import './DeckDetail.css'
 import CommentDisplay from '../Comments/CommentDisplay';
 import DeckCards from '../Cards/DeckCards';
+import FourOhFour from '../FoF';
 
 const DeckDetail = () => {
     const { id } = useParams();
@@ -29,21 +30,25 @@ const DeckDetail = () => {
     useEffect(() => {
         let errs = [];
 
-        if (!deckName.length) errs.push("Deck name can't be blank")
-        if (deckName.length > 25) errs.push("Deck name can't be greater than 25 characters")
-        if (!description.length) errs.push("Description can't be blank")
-        if (description.length > 200) errs.push('Deck description must be less than 200 characters long')
-        if (!(imageUrl.endsWith('.jpg') || imageUrl.endsWith('png') || imageUrl.endsWith('.jpeg'))) errs.push('Image url must end with .png/.jpeg/.jpg')
-        if (!imageUrl.length) errs.push("Image url can't be blank")
+        if (!deckName?.length) errs.push("Deck name can't be blank")
+        if (deckName?.length > 25) errs.push("Deck name can't be greater than 25 characters")
+        if (!description?.length) errs.push("Description can't be blank")
+        if (description?.length > 200) errs.push('Deck description must be less than 200 characters long')
+        if (!(imageUrl?.endsWith('.jpg') || imageUrl?.endsWith('png') || imageUrl?.endsWith('.jpeg'))) errs.push('Image url must end with .png/.jpeg/.jpg')
+        if (!imageUrl?.length) errs.push("Image url can't be blank")
         if (errs.length) {
             setErrors(errs)
         } else {
             setErrors([])
         }
 
-
     }, [imageUrl, description, deckName])
 
+    if (!currentDeck) {
+        return (
+            <FourOhFour />
+        )
+    }
 
     const handleDelete = () => {
         dispatch(deckActions.deleteDeckById(currentDeck?.id))
@@ -83,19 +88,6 @@ const DeckDetail = () => {
     return (
         <div className='detail-container'>
             <div className='inner-detail'>
-                <div className='deck-name-container'>
-                    <input
-                        className='deck-name-input'
-                        ref={refOne}
-                        value={deckName}
-                        onChange={(e) => { setChangesMade(true); setDeckName(e.target.value) }}
-                        readOnly={myDeck ? false : true}
-                        required
-                    />
-                    <div>
-                        {myDeck ? (<button className="edit-but" onClick={handleClickOne}><i className="fa-regular fa-pen-to-square"></i></button>) : null}
-                    </div>
-                </div>
                 <div className='outer-image-n-description'>
                     <div className='inner-img-n-desc'>
                         <div className='img-n-edit'>
@@ -105,6 +97,7 @@ const DeckDetail = () => {
                             {myDeck && (<div className='click-cover'>click cover image to edit</div>)}
                             {showImgUrl && myDeck && (
                                 <div><input
+                                    className='url-input'
                                     value={imageUrl}
                                     onChange={(e) => { setChangesMade(true); setImageUrl(e.target.value) }}
                                 /></div>)}
@@ -112,25 +105,44 @@ const DeckDetail = () => {
                     </div>
 
                     <div className='outer-desc'>
-                        <label className='deck-label'>About this deck</label>
-                        <div className='inner-desc'>
+                        <div className='deck-name-container'>
                             <input
-                                className='deck-description'
-                                ref={refTwo}
-                                value={description}
-                                onChange={(e) => { setChangesMade(true); setDescription(e.target.value) }}
+                                className='deck-name-input'
+                                ref={refOne}
+                                value={deckName}
+                                onChange={(e) => { setChangesMade(true); setDeckName(e.target.value) }}
                                 readOnly={myDeck ? false : true}
                                 required
                             />
                             <div>
+                                {myDeck ? (<button className="edit-but" onClick={handleClickOne}><i className="fa-regular fa-pen-to-square"></i></button>) : null}
+                            </div>
+                        </div>
+                        <div className='mid-desc'>
+                            <label className='deck-label'>About this deck</label>
+                            <div className='inner-desc'>
+                                <textarea
+                                    className='deck-description'
+                                    ref={refTwo}
+                                    value={description}
+                                    onChange={(e) => { setChangesMade(true); setDescription(e.target.value) }}
+                                    readOnly={myDeck ? false : true}
+                                    required
+                                />
                                 {myDeck ? (<button className="edit-but" onClick={handleClickTwo}><i className=" fa-regular fa-pen-to-square"></i></button>) : null}
                             </div>
                         </div>
                         <div className='edit-n-delete'>
                             <div>
-                                {myDeck ? (<button onClick={handleDelete}>Delete Deck</button>) : null}
+                                {myDeck ? (<button className='delete-but' onClick={handleDelete}>Delete Deck</button>) : null}
                             </div>
-                            <div className='save-changes'>{changesMade && myDeck ? (<button onClick={handleEdit}>Save changes</button>) : null}</div>
+                            <div className='save-changes'>
+                                <button
+                                    onClick={handleEdit}
+                                    className={changesMade && myDeck ? "visible-save" : "invisible-save"}>
+                                    Save changes
+                                </button>
+                            </div>
                             <div>
                                 {myDeck && hasSubmitted && (
                                     <div className='error-list'>
