@@ -44,6 +44,10 @@
     background-color: rgb(255, 255, 255);
 }
 
+.sign-input:hover {
+    background-color: #c8c8c8;
+}
+
 .signup-button {
     background-color: #1E1915;
     line-height: 20px;

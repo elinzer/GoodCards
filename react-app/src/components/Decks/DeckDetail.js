@@ -82,71 +82,75 @@ const DeckDetail = () => {
 
     return (
         <div className='detail-container'>
-            <div className='edit-n-delete'>
-                <div>
-                    {myDeck ? (<button onClick={handleDelete}>Delete Deck</button>) : null}
-                </div>
-                <div className='save-changes'>{changesMade && myDeck ? (<button onClick={handleEdit}>Save changes</button>) : null}</div>
-                <div>
-                    {myDeck && hasSubmitted && (
-                        <ul>
-                            {errors.map((error, ind) => {
-                                return (
-                                    <li key={ind}>{error}</li>
-                                )
-                            })}
-                        </ul>
-                    )}
-                </div>
-            </div>
-            <div className='deck-name-container'>
-                <input
-                    className='deck-name-input'
-                    ref={refOne}
-                    value={deckName}
-                    onChange={(e) => { setChangesMade(true); setDeckName(e.target.value) }}
-                    readOnly={myDeck ? false : true}
-                    required
-                />
-                <div>
-                    {myDeck ? (<button onClick={handleClickOne}><i class="fa-regular fa-pen-to-square"></i></button>) : null}
-                </div>
-            </div>
-            <div className='outer-image-n-description'>
-                <div className='inner-img-n-desc'>
-                    <div className='img-n-edit'>
-                        <img className='cover-img'
-                            onClick={() => setShowImgUrl(!showImgUrl)}
-                            style={{ maxHeight: '340px', maxWidth: '235px' }} src={currentDeck?.img_url} onError={(e) => e.target.src = defaultCard} />
-                        {myDeck && (<div>click cover image to edit</div>)}
-                    {showImgUrl && myDeck && (
-                        <div><input
-                            value={imageUrl}
-                            onChange={(e) => { setChangesMade(true); setImageUrl(e.target.value) }}
-                        /></div>)}
+            <div className='inner-detail'>
+                <div className='edit-n-delete'>
+                    <div>
+                        {myDeck ? (<button onClick={handleDelete}>Delete Deck</button>) : null}
+                    </div>
+                    <div className='save-changes'>{changesMade && myDeck ? (<button onClick={handleEdit}>Save changes</button>) : null}</div>
+                    <div>
+                        {myDeck && hasSubmitted && (
+                            <ul>
+                                {errors.map((error, ind) => {
+                                    return (
+                                        <li key={ind}>{error}</li>
+                                    )
+                                })}
+                            </ul>
+                        )}
                     </div>
                 </div>
+                <div className='deck-name-container'>
+                    <input
+                        className='deck-name-input'
+                        ref={refOne}
+                        value={deckName}
+                        onChange={(e) => { setChangesMade(true); setDeckName(e.target.value) }}
+                        readOnly={myDeck ? false : true}
+                        required
+                    />
+                    <div>
+                        {myDeck ? (<button onClick={handleClickOne}><i class="fa-regular fa-pen-to-square"></i></button>) : null}
+                    </div>
+                </div>
+                <div className='outer-image-n-description'>
+                    <div className='inner-img-n-desc'>
+                        <div className='img-n-edit'>
+                            <img className='cover-img'
+                                onClick={() => setShowImgUrl(!showImgUrl)}
+                                style={{ maxHeight: '340px', maxWidth: '235px' }} src={currentDeck?.img_url} onError={(e) => e.target.src = defaultCard} />
+                            {myDeck && (<div className='click-cover'>click cover image to edit</div>)}
+                            {showImgUrl && myDeck && (
+                                <div><input
+                                    value={imageUrl}
+                                    onChange={(e) => { setChangesMade(true); setImageUrl(e.target.value) }}
+                                /></div>)}
+                        </div>
+                    </div>
 
-                <div>
-                    <label className='deck-label'>About this deck
-                        <input
-                            className='deck-description'
-                            ref={refTwo}
-                            value={description}
-                            onChange={(e) => { setChangesMade(true); setDescription(e.target.value) }}
-                            readOnly={myDeck ? false : true}
-                            required
-                        /></label>
+                    <div className='outer-desc'>
+                        <label className='deck-label'>About this deck</label>
+                        <div className='inner-desc'>
+                            <input
+                                className='deck-description'
+                                ref={refTwo}
+                                value={description}
+                                onChange={(e) => { setChangesMade(true); setDescription(e.target.value) }}
+                                readOnly={myDeck ? false : true}
+                                required
+                            />
+                            <div>
+                                {myDeck ? (<button onClick={handleClickTwo}><i class="fa-regular fa-pen-to-square"></i></button>) : null}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className='comment-container'>
+                    <CommentDisplay deck={currentDeck} />
                 </div>
                 <div>
-                    {myDeck ? (<button onClick={handleClickTwo}><i class="fa-regular fa-pen-to-square"></i></button>) : null}
+                    <DeckCards deck={currentDeck} />
                 </div>
-            </div>
-            <div className='comment-container'>
-                <CommentDisplay deck={currentDeck} />
-            </div>
-            <div>
-                <DeckCards deck={currentDeck} />
             </div>
         </div>
     )

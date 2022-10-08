@@ -19,6 +19,11 @@ const LoginForm = () => {
     }
   };
 
+  const demoLogin = () => {
+    dispatch(login('demo@aa.io', 'password'))
+  }
+
+
   const updateEmail = (e) => {
     setEmail(e.target.value);
   };
@@ -68,6 +73,9 @@ const LoginForm = () => {
             </div>
           </div>
         </form>
+        <div>
+        <button onClick={demoLogin} className='demo-button'>Demo Login</button>
+        </div>
         <div className='link-div'>
           Don't have an account?
           <NavLink className='to-sign' to='/sign-up'>Sign up</NavLink>
