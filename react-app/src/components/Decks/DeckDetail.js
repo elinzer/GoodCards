@@ -83,23 +83,6 @@ const DeckDetail = () => {
     return (
         <div className='detail-container'>
             <div className='inner-detail'>
-                <div className='edit-n-delete'>
-                    <div>
-                        {myDeck ? (<button onClick={handleDelete}>Delete Deck</button>) : null}
-                    </div>
-                    <div className='save-changes'>{changesMade && myDeck ? (<button onClick={handleEdit}>Save changes</button>) : null}</div>
-                    <div>
-                        {myDeck && hasSubmitted && (
-                            <ul>
-                                {errors.map((error, ind) => {
-                                    return (
-                                        <li key={ind}>{error}</li>
-                                    )
-                                })}
-                            </ul>
-                        )}
-                    </div>
-                </div>
                 <div className='deck-name-container'>
                     <input
                         className='deck-name-input'
@@ -110,7 +93,7 @@ const DeckDetail = () => {
                         required
                     />
                     <div>
-                        {myDeck ? (<button onClick={handleClickOne}><i class="fa-regular fa-pen-to-square"></i></button>) : null}
+                        {myDeck ? (<button className="edit-but" onClick={handleClickOne}><i className="fa-regular fa-pen-to-square"></i></button>) : null}
                     </div>
                 </div>
                 <div className='outer-image-n-description'>
@@ -118,7 +101,7 @@ const DeckDetail = () => {
                         <div className='img-n-edit'>
                             <img className='cover-img'
                                 onClick={() => setShowImgUrl(!showImgUrl)}
-                                style={{ maxHeight: '340px', maxWidth: '235px' }} src={currentDeck?.img_url} onError={(e) => e.target.src = defaultCard} />
+                                style={{ maxHeight: '340px', maxWidth: '235px', cursor: `${myDeck ? 'pointer' : null}` }} src={currentDeck?.img_url} onError={(e) => e.target.src = defaultCard} />
                             {myDeck && (<div className='click-cover'>click cover image to edit</div>)}
                             {showImgUrl && myDeck && (
                                 <div><input
@@ -140,7 +123,24 @@ const DeckDetail = () => {
                                 required
                             />
                             <div>
-                                {myDeck ? (<button onClick={handleClickTwo}><i class="fa-regular fa-pen-to-square"></i></button>) : null}
+                                {myDeck ? (<button className="edit-but" onClick={handleClickTwo}><i className=" fa-regular fa-pen-to-square"></i></button>) : null}
+                            </div>
+                        </div>
+                        <div className='edit-n-delete'>
+                            <div>
+                                {myDeck ? (<button onClick={handleDelete}>Delete Deck</button>) : null}
+                            </div>
+                            <div className='save-changes'>{changesMade && myDeck ? (<button onClick={handleEdit}>Save changes</button>) : null}</div>
+                            <div>
+                                {myDeck && hasSubmitted && (
+                                    <div className='error-list'>
+                                        {errors.map((error, ind) => {
+                                            return (
+                                                <div key={ind}>{error}</div>
+                                            )
+                                        })}
+                                    </div>
+                                )}
                             </div>
                         </div>
                     </div>

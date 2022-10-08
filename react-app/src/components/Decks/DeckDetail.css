@@ -3,7 +3,7 @@ body {
 }
 
 .detail-container {
-    border: 1px solid red;
+    /* border: 1px solid red; */
     margin-top: 90px;
     display: flex;
     flex-direction: column;
@@ -15,10 +15,11 @@ body {
 
 .inner-detail {
     display: flex;
-    border: 1px solid orange;
+    /* border: 1px solid orange; */
     flex-direction: column;
     background-color: white;
     width: 75%;
+    border-radius: 15px;
 }
 
 .deck-name-container {
@@ -33,8 +34,9 @@ body {
     border: none;
     cursor: default;
     font-size: 18px;
-    line-height: 30px;
+    line-height: 29px;
     border: 1px solid #cccbcb;
+    width: fit-content;
 }
 
 .outer-desc {
@@ -45,6 +47,7 @@ body {
     flex-direction: column;
     height: 200px;
     padding: 10px 10px;
+    margin-left: 10px;
 }
 
 .inner-desc {
@@ -91,10 +94,6 @@ body {
     justify-content: center;
 }
 
-.cover-img {
-    cursor: pointer;
-}
-
 .click-cover {
     font-family: Lato;
     font-size: 13px;
@@ -107,3 +106,19 @@ body {
     align-self: center;
     margin-right: 50px;
 } */
+
+.error-list {
+    list-style: none;
+    color: red;
+    font-family: Lato;
+    font-style: italic;
+}
+
+.edit-but {
+    cursor: pointer;
+    border: none;
+    padding: 1px 1px;
+    margin: 2px 2px;
+    font-size: 16px;
+    background-color: white;
+}

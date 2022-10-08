@@ -2,10 +2,12 @@
     list-style: none;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .outer-deck-cards {
     font-family: Lato;
+    padding: 0px 5px;
 }
 
 .outer-card {
