@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import * as commentActions from '../../store/comment';
 import './CommentDisplay.css'
+import { useEffect } from 'react';
 
 const CommentDisplay = ({ deck }) => {
     const { id } = useParams();
@@ -18,13 +19,23 @@ const CommentDisplay = ({ deck }) => {
     const [hasSubmitted, setHasSubmitted] = useState(false)
 
 
+    useEffect(() => {
+        let errs = [];
+        if (!comment.length) errs.push('Comment cannot be empty')
+        if (comment.length > 200) errs.push('Comment cannot be greater than 200 characters')
+        if (errs.length) {
+            setErrors(errs)
+        } else {
+            setErrors([]);
+        }
+
+    }, [comment])
+
+
     const handlePost = () => {
         setHasSubmitted(true);
-        setErrors([]);
-        if (!comment.length) {
-            setErrors(['Comment cannot be empty'])
-        } else if (comment.length > 200) {
-            setErrors(['Comment cannot be greater than 200 characters'])
+        if (errors.length) {
+            return
         } else {
             const commentData = {
                 user_id: sessionUser.id,
@@ -45,7 +56,7 @@ const CommentDisplay = ({ deck }) => {
         <div className='comments-container'>
             <h4>Comments</h4>
             {hasSubmitted && (<ul className='error-spot'>
-                {errors.map((error, i ) => {
+                {errors.map((error, i) => {
                     return (
                         <li key={i}>{error}</li>
                     )

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import * as commentActions from '../../store/comment'
@@ -18,11 +18,21 @@ const EditComment = () => {
     const [errors, setErrors] = useState([]);
     const [hasSubmitted, setHasSubmitted] = useState(false)
 
+    useEffect(() => {
+        let errs = [];
+        if (!comment.length) errs.push('Comment cannot be empty')
+        if (comment.length > 200) errs.push('Comment cannot be more than 200 characters long')
+        if (errs.length) {
+            setErrors(errs)
+        } else {
+            setErrors([])
+        }
+    }, [comment])
+
     const handleEdit = () => {
         setHasSubmitted(true);
-        setErrors([]);
-        if (!comment.length) {
-            setErrors(['Comment cannot be empty'])
+        if (errors.length) {
+            return
         } else {
             const commentData = {
                 user_id: sessionUser.id,
@@ -42,20 +52,18 @@ const EditComment = () => {
         history.push(`/decks/${thisComment.deck_id}`)
     }
 
-
-
     return (
         <div className="comment-background">
             <div className="outer-edit-comment">
                 <div className="inner-edit-comment">
                     <h4>Edit Comment</h4>
-                    {hasSubmitted && (<ul className='error-spot'>
+                    {hasSubmitted && (<div className='error-spot'>
                         {errors.map((error, i) => {
                             return (
-                                <li key={i}>{error}</li>
+                                <div key={i} style={{fontStyle: 'italic', color: 'red'}}>{error}</div>
                             )
                         })}
-                    </ul>)}
+                    </div>)}
                     <textarea
                         className="comment-box"
                         value={comment}

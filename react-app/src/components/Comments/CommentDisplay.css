@@ -4,6 +4,7 @@
     font-family: Lato;
     align-items: center;
     justify-content: center;
+    margin-bottom: 30px;
 }
 
 .post-comment {
@@ -42,7 +43,7 @@
     padding: 20px 2px;
     border: 1px solid gray;
     border-radius: 15px;
-    /* background-color: #f8f6f3; */
+    background-color: #f8f6f3;
     width: 600px;
     max-width: 600px;
     min-width: 600px;
@@ -59,10 +60,10 @@
 }
 
 .comment-body {
-    background-color: white;
-    width: fit-content;
+    /* width: fit-content; */
     border-radius: 5px;
     padding: 5px 5px;
+    background-color: white;
 }
 
 .comment-time {
