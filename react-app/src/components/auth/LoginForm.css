@@ -39,15 +39,21 @@
     background-color: rgb(255, 255, 255);
 }
 
+.login-input:hover {
+    background-color: #c8c8c8;
+}
+
+
 .login-button {
     background-color: #1E1915;
     line-height: 20px;
     border-radius: 20px;
     color: white;
-    margin-top: 15px;
+    margin-top: 10px;
     margin-bottom: 15px;
-    padding: 5px 10px;
+    padding: 5px 20px;
     font-size: 14px;
+    cursor: pointer;
 }
 
 .to-sign {
@@ -58,4 +64,15 @@
 
 .to-sign:hover {
     text-decoration: underline;
+}
+
+.demo-button {
+    background-color: #1E1915;
+    line-height: 20px;
+    border-radius: 20px;
+    color: white;
+    margin-bottom: 15px;
+    padding: 5px 10px;
+    font-size: 13px;
+    cursor: pointer;
 }

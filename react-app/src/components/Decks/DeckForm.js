@@ -68,6 +68,7 @@ const DeckForm = () => {
             <div className='outer-form-div'>
                 <form onSubmit={handleSubmit}
                     className='form-container'>
+                        <div className='create-title'>Create A Deck</div>
                     {hasSubmitted && (<ul className='create-errors'>
                         {errors.map((error, i) => {
                             return (

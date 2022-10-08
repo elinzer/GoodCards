@@ -13,10 +13,20 @@ body {
     align-items: center;
 }
 
+.inner-detail {
+    display: flex;
+    border: 1px solid orange;
+    flex-direction: column;
+    background-color: white;
+    width: 75%;
+}
+
 .deck-name-container {
     border: 1px solid blue;
     display: flex;
     font-family: Lato;
+    align-items: center;
+    justify-content: center;
 }
 
 .deck-name-input {
@@ -25,6 +35,20 @@ body {
     font-size: 18px;
     line-height: 30px;
     border: 1px solid #cccbcb;
+}
+
+.outer-desc {
+    border: 1px solid pink;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 200px;
+    padding: 10px 10px;
+}
+
+.inner-desc {
+    display: flex;
 }
 
 .deck-label {
@@ -39,7 +63,7 @@ body {
 .deck-description {
     border: 1px solid #cccbcb;
     text-decoration: none;
-    width: 600px;
+    width: 500px;
     font-family: Lato;
 }
 
@@ -71,9 +95,15 @@ body {
     cursor: pointer;
 }
 
-.comment-container {
+.click-cover {
+    font-family: Lato;
+    font-size: 13px;
+    font-style: italic;
+}
+
+/* .comment-container {
     border: 1px solid green;
     justify-content: center;
     align-self: center;
     margin-right: 50px;
-}
+} */

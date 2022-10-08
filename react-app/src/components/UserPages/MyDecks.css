@@ -30,6 +30,7 @@
     cursor: pointer;
     padding: 4px 12px;
     border-radius: 10px;
+    line-height: 25px;
 }
 
 .new-deck-butt:hover {
@@ -39,6 +40,10 @@
 
 table {
     table-layout: fixed;
+    text-align: center;
+    background-color: white;
+    border-radius: 15px;
+    margin-bottom: 15px;
 }
 
 th {

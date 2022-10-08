@@ -6,7 +6,8 @@
     border: none;
     cursor: pointer;
     padding: 0px 0px;
-    background-color: #F4F1EA;
+    /* background-color: #F4F1EA; */
+    background-color: white;
 }
 
 .add-card:hover {
