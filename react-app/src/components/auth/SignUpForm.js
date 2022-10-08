@@ -29,8 +29,6 @@ const SignUpForm = () => {
     }
   }, [email, repeatPassword, username])
 
-  console.log(password)
-  console.log(repeatPassword)
 
   const onSignUp = async (e) => {
     e.preventDefault();
@@ -40,11 +38,9 @@ const SignUpForm = () => {
     } else {
       const data = await dispatch(signUp(username, email, password));
       if (data || data?.errors) {
-        console.log(data)
         setErrors([data])
       } else {
         setHasSubmitted(false);
-        console.log('do u get here')
         setErrors([]);
       }
     }
