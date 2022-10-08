@@ -20,6 +20,7 @@ import Footer from './components/Footer/Footer';
 import MyDecks from './components/UserPages/MyDecks';
 import DeckForm from './components/Decks/DeckForm';
 import AddCards from './components/Cards/AddCards';
+import FourOhFour from './components/FoF';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -66,6 +67,9 @@ function App() {
         <ProtectedRoute path='/edit-comment/:id'>
           <EditComment />
         </ProtectedRoute>
+        <Route>
+          <FourOhFour />
+        </Route>
       </Switch>
     </BrowserRouter>
   );

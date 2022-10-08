@@ -6,6 +6,7 @@ import * as deckActions from '../../store/deck';
 import './DeckDetail.css'
 import CommentDisplay from '../Comments/CommentDisplay';
 import DeckCards from '../Cards/DeckCards';
+import FourOhFour from '../FoF';
 
 const DeckDetail = () => {
     const { id } = useParams();
@@ -29,21 +30,25 @@ const DeckDetail = () => {
     useEffect(() => {
         let errs = [];
 
-        if (!deckName.length) errs.push("Deck name can't be blank")
-        if (deckName.length > 25) errs.push("Deck name can't be greater than 25 characters")
-        if (!description.length) errs.push("Description can't be blank")
-        if (description.length > 200) errs.push('Deck description must be less than 200 characters long')
-        if (!(imageUrl.endsWith('.jpg') || imageUrl.endsWith('png') || imageUrl.endsWith('.jpeg'))) errs.push('Image url must end with .png/.jpeg/.jpg')
-        if (!imageUrl.length) errs.push("Image url can't be blank")
+        if (!deckName?.length) errs.push("Deck name can't be blank")
+        if (deckName?.length > 25) errs.push("Deck name can't be greater than 25 characters")
+        if (!description?.length) errs.push("Description can't be blank")
+        if (description?.length > 200) errs.push('Deck description must be less than 200 characters long')
+        if (!(imageUrl?.endsWith('.jpg') || imageUrl?.endsWith('png') || imageUrl?.endsWith('.jpeg'))) errs.push('Image url must end with .png/.jpeg/.jpg')
+        if (!imageUrl?.length) errs.push("Image url can't be blank")
         if (errs.length) {
             setErrors(errs)
         } else {
             setErrors([])
         }
 
-
     }, [imageUrl, description, deckName])
 
+    if (!currentDeck) {
+        return (
+            <FourOhFour />
+        )
+    }
 
     const handleDelete = () => {
         dispatch(deckActions.deleteDeckById(currentDeck?.id))
