@@ -12,7 +12,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgb(244, 241, 234, .65);
+    background-color: rgb(244, 241, 234, .6);
     margin-top: 150px;
     border-radius: 20px;
     padding: 50px 20px 50px 20px;
@@ -31,19 +31,24 @@
 
 .submit-edit-button,
 .delete-comment-button {
-    margin: 0px 5px;
-    color: #333333;
-    border: 1px solid #333333;
+    background-color: #1E1915;
+    line-height: 20px;
+    border-radius: 20px;
+    color: white;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 5px 15px;
+    font-size: 14px;
     cursor: pointer;
-    padding: 4px 12px;
-    border-radius: 10px;
 }
 
-.submit-edit-button:hover,
+/* .submit-edit-button:hover,
 .delete-comment-button:hover {
     background-color: #333333;
     color: white;
-}
+} */
 
 .comment-box {
     resize: none;

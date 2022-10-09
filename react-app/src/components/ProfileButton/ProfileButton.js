@@ -30,15 +30,13 @@ const ProfileButton = ({ user }) => {
                 className="profile-button"
                 onClick={openMenu}>
                 <i className="prof-icon fa-regular fa-user"></i>
-            </button>
+                </button>
             {showMenu && (
                 <div className="drop-down">
                     <div className="hello">
                         Hello, {user.username}!
                     </div>
-                    <div className="logout">
                         <LogoutButton />
-                    </div>
                 </div>)}
         </div>
     )

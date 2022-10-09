@@ -9,13 +9,18 @@
     font-family: Lato;
 }
 
+.log-in-head {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
 .form-and-link {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 70px 40px 50px 40px;
-    background-color: rgb(244, 241, 234, .5);
+    background-color: rgb(244, 241, 234, .6);
     border-radius: 20px;
 }
 
