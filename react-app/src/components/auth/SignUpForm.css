@@ -8,6 +8,11 @@
     height: 900px;
 }
 
+.sign-up-head {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
 .signup-form {
     margin-top: 15px;
 }
@@ -15,7 +20,7 @@
 .form-n-link {
     display: flex;
     flex-direction: column;
-    background-color: rgb(244, 241, 234, .6);
+    background-color: rgb(244, 241, 234, .65);
     border-radius: 20px;
     padding: 50px 40px 50px 40px;
     font-family: Lato;
