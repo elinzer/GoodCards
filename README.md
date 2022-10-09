@@ -15,5 +15,15 @@ SQLAlchemy
 #### Hosted with:
 ![Heroku](https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white)
 
-## Wiki
-<a href='https://github.com/elinzer/GoodCards/wiki'>Project Wiki</a>
+## Wiki Shortcuts
+* <a href='https://github.com/elinzer/GoodCards/wiki/DB-Schema'>Database Schema</a>
+* <a href='https://github.com/elinzer/GoodCards/wiki/MVP-Feature-List'>MVP Features</a>
+* <a href='https://github.com/elinzer/GoodCards/wiki/API-Routes'>API Routes</a>
+* <a href='https://github.com/elinzer/GoodCards/wiki/Redux-State-Shape'>Redux State Shape</a>
+
+## How to run GoodCards locally:
+1. Clone the repository in your terminal (see 'Code' button above)
+2. In root of the repo run ```pipenv install```
+3. Enter the shell with ```pipenv shell``` then ```flask db upgrade``` and ```flask seed all``` to seed the database. Then start the backend server with ```flask run```
+4. In a second terminal, cd into react-app and ```npm install``` then ```npm start``` to start frontend server
+5. The project should be up and running locally!
