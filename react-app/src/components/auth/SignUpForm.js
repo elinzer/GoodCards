@@ -14,9 +14,9 @@ const SignUpForm = () => {
   const dispatch = useDispatch();
   const [hasSubmitted, setHasSubmitted] = useState(false)
 
-  let errs = [];
 
   useEffect(() => {
+    let errs = [];
     if (email.length < 3 || email.indexOf('@') !== email.lastIndexOf('@') || !(email.includes('.com') || email.includes('.co') || email.includes('.io') || email.includes('.net'))) errs.push('Email must be valid email');
     if (repeatPassword != password) errs.push('Passwords must match')
     if (username.length > 20) {
@@ -27,7 +27,7 @@ const SignUpForm = () => {
     } else {
       setErrors([])
     }
-  }, [email, repeatPassword, username])
+  }, [email, password, repeatPassword, username])
 
 
   const onSignUp = async (e) => {
@@ -69,7 +69,7 @@ const SignUpForm = () => {
   return (
     <div className='signup-form-container'>
       <div className='form-n-link'>
-        <div>Sign Up</div>
+        <div className='sign-up-head'>Sign Up</div>
         <form onSubmit={onSignUp} className='signup-form'>
           <div className='signup-errors'>
             {hasSubmitted && errors.map((error, ind) => {
@@ -80,7 +80,7 @@ const SignUpForm = () => {
             })}
           </div>
           <div className='name-div'>
-            <label>User Name</label>
+            <label>Username</label>
             <input
               className='sign-input'
               placeholder='Username'

@@ -119,7 +119,7 @@ const DeckDetail = () => {
                             </div>
                         </div>
                         <div className='mid-desc'>
-                            <label className='deck-label'>About this deck</label>
+                            <label className='deck-label-text'>About this deck</label>
                             <div className='inner-desc'>
                                 <textarea
                                     className='deck-description'
