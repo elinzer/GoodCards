@@ -5,7 +5,7 @@
     background-color: #F4F1EA;
     color: #382110;
     width: 65px;
-    margin-right: 50px;
+    margin-right: 60px;
 }
 
 .profile-button:hover {
@@ -27,25 +27,19 @@
     background-color: #F4F1EA;
 }
 
-.hello,
-.logout {
+.hello {
     background-color: #F4F1EA;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-left: 5px;
-    width: 101px;
+    width: 100%;
     font-size: 14px;
     padding-bottom: 4px;
-}
-
-.hello {
+    text-align: center;
     border-bottom: 1px solid #cccbcb;
     padding-top: 4px;
 }
 
-.logout {
-    padding-top: 4px;
+.hello:hover,
+.logout-button:hover {
+    background-color: #cccbcb;
 }
 
 .logout-button {
@@ -54,11 +48,14 @@
     font-size: 16px;
     font-family: Lato;
     cursor: pointer;
-    padding: 0px 14px;
+    padding-top: 5px;
+    padding-bottom: 3px;
     width: 100%;
 }
 
 .drop-down {
     border: 1px solid #cccbcb;
     box-shadow: 2px 2px 2px 1px #cccbcb ;
+    background-color: #F4F1EA;
+    width: 120px;
 }
