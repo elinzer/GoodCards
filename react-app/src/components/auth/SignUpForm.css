@@ -8,17 +8,32 @@
     height: 900px;
 }
 
+.signup-form {
+    margin-top: 15px;
+}
+
 .form-n-link {
     display: flex;
     flex-direction: column;
-    background-color: rgb(244, 241, 234, .5);
+    background-color: rgb(244, 241, 234, .6);
     border-radius: 20px;
     padding: 50px 40px 50px 40px;
     font-family: Lato;
+    align-items: center;
+}
+
+.signup-errors {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .error-lis {
     color: red;
+    font-style: italic;
+    /* text-align: center; */
+    font-size: 14px;
 }
 
 .name-div,

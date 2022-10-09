@@ -54,6 +54,7 @@
     border-radius: 24px;
     margin: 10px 2px;
     width: 190px;
+    text-decoration: none !important;
 }
 
 .name-input:hover,
@@ -62,13 +63,14 @@
     background-color: #c8c8c8;
 }
 
-.name-label,
+.deck-label,
 .image-label,
 .desc-label {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    text-decoration: none !important;
 }
 
 .create-button {
@@ -79,6 +81,7 @@
     margin-top: 25px;
     padding: 5px 10px;
     font-size: 14px;
+    cursor: pointer;
 
 }
 

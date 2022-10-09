@@ -5,7 +5,6 @@
     background-color: #F4F1EA;
     color: #382110;
     width: 65px;
-    /* position: fixed; */
     margin-right: 50px;
 }
 
@@ -13,11 +12,11 @@
     background-color: #382110;
 }
 
-.profile-button:focus {
+/* .profile-button:focus {
     background-color: #382110;
 }
 
-/* .profile-button:visited {
+.profile-button:visited {
     background-color: #F4F1EA;
 } */
 
@@ -34,10 +33,19 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 5px 5px;
+    padding-left: 5px;
+    width: 101px;
+    font-size: 14px;
+    padding-bottom: 4px;
+}
+
+.hello {
     border-bottom: 1px solid #cccbcb;
-    border-left: 1px solid #cccbcb;
-    border-right: 1px solid #cccbcb;
+    padding-top: 4px;
+}
+
+.logout {
+    padding-top: 4px;
 }
 
 .logout-button {
@@ -47,9 +55,10 @@
     font-family: Lato;
     cursor: pointer;
     padding: 0px 14px;
+    width: 100%;
 }
 
 .drop-down {
-    /* border: 1px solid #cccbcb; */
+    border: 1px solid #cccbcb;
     box-shadow: 2px 2px 2px 1px #cccbcb ;
 }
