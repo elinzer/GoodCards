@@ -26,12 +26,11 @@ const ProfileButton = ({ user }) => {
 
     return (
         <div>
-            <div>
-                <button
+            <button
                 className="profile-button"
                 onClick={openMenu}>
-                    <i className="prof-icon fa-regular fa-user"></i></button>
-            </div>
+                <i className="prof-icon fa-regular fa-user"></i>
+            </button>
             {showMenu && (
                 <div className="drop-down">
                     <div className="hello">

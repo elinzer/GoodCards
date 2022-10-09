@@ -17,7 +17,7 @@ const SignUpForm = () => {
   let errs = [];
 
   useEffect(() => {
-    if (email.length < 3 || !(email.includes('.com') || email.includes('.co') || email.includes('.io') || email.includes('.net'))) errs.push('Email must be valid email');
+    if (email.length < 3 || email.indexOf('@') !== email.lastIndexOf('@') || !(email.includes('.com') || email.includes('.co') || email.includes('.io') || email.includes('.net'))) errs.push('Email must be valid email');
     if (repeatPassword != password) errs.push('Passwords must match')
     if (username.length > 20) {
       errs.push('Username cannot be greater than 20 characters')
@@ -38,7 +38,7 @@ const SignUpForm = () => {
     } else {
       const data = await dispatch(signUp(username, email, password));
       if (data || data?.errors) {
-        setErrors([data])
+        setErrors([...data])
       } else {
         setHasSubmitted(false);
         setErrors([]);
@@ -69,14 +69,16 @@ const SignUpForm = () => {
   return (
     <div className='signup-form-container'>
       <div className='form-n-link'>
+        <div>Sign Up</div>
         <form onSubmit={onSignUp} className='signup-form'>
-          <ul>
+          <div className='signup-errors'>
             {hasSubmitted && errors.map((error, ind) => {
+              console.log(error)
               return (
-                <li className='error-lis' key={ind}>{error}</li>
+                <div className='error-lis' key={ind}>{error}</div>
               )
             })}
-          </ul>
+          </div>
           <div className='name-div'>
             <label>User Name</label>
             <input

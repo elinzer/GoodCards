@@ -107,7 +107,7 @@ const DeckDetail = () => {
                     <div className='outer-desc'>
                         <div className='deck-name-container'>
                             <input
-                                className='deck-name-input'
+                                className='deck-name'
                                 ref={refOne}
                                 value={deckName}
                                 onChange={(e) => { setChangesMade(true); setDeckName(e.target.value) }}

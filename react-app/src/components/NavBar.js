@@ -16,9 +16,7 @@ const NavBar = () => {
         <div>
           <NavLink to='/my-decks'><button className='my-decks-button'>My Decks</button></NavLink>
         </div>
-        <div>
           <ProfileButton user={sessionUser} />
-        </div>
       </div>)
   } else {
     sessionLinks = (
