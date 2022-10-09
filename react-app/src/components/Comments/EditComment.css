@@ -44,12 +44,6 @@
     cursor: pointer;
 }
 
-/* .submit-edit-button:hover,
-.delete-comment-button:hover {
-    background-color: #333333;
-    color: white;
-} */
-
 .comment-box {
     resize: none;
     width: 350px;
