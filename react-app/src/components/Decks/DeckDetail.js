@@ -134,16 +134,6 @@ const DeckDetail = () => {
                         </div>
                         <div className='edit-n-delete'>
                             <div>
-                                {myDeck ? (<button className='delete-but' onClick={handleDelete}>Delete Deck</button>) : null}
-                            </div>
-                            <div className='save-changes'>
-                                <button
-                                    onClick={handleEdit}
-                                    className={changesMade && myDeck ? "visible-save" : "invisible-save"}>
-                                    Save changes
-                                </button>
-                            </div>
-                            <div>
                                 {myDeck && hasSubmitted && (
                                     <div className='error-list'>
                                         {errors.map((error, ind) => {
@@ -153,6 +143,16 @@ const DeckDetail = () => {
                                         })}
                                     </div>
                                 )}
+                            </div>
+                            <div className='save-changes'>
+                                <button
+                                    onClick={handleEdit}
+                                    className={changesMade && myDeck ? "visible-save" : "invisible-save"}>
+                                    Save changes
+                                </button>
+                            </div>
+                            <div>
+                                {myDeck ? (<button className='delete-but' onClick={handleDelete}>Delete Deck</button>) : null}
                             </div>
                         </div>
                     </div>
