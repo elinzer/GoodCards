@@ -73,7 +73,6 @@ const SignUpForm = () => {
         <form onSubmit={onSignUp} className='signup-form'>
           <div className='signup-errors'>
             {hasSubmitted && errors.map((error, ind) => {
-              console.log(error)
               return (
                 <div className='error-lis' key={ind}>{error}</div>
               )
