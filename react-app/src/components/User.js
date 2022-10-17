@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import './User.css'
 
 function User() {
   const [user, setUser] = useState({});
@@ -21,6 +22,7 @@ function User() {
   }
 
   return (
+    <div className='user-page'>
     <ul>
       <li>
         <strong>User Id</strong> {userId}
@@ -32,6 +34,7 @@ function User() {
         <strong>Email</strong> {user.email}
       </li>
     </ul>
+    </div>
   );
 }
 export default User;

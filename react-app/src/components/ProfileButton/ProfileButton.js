@@ -1,6 +1,7 @@
 import LogoutButton from "../auth/LogoutButton";
 import { useEffect, useState } from "react";
 import './ProfileButton.css'
+import { NavLink } from "react-router-dom";
 
 
 
@@ -34,7 +35,7 @@ const ProfileButton = ({ user }) => {
             {showMenu && (
                 <div className="drop-down">
                     <div className="hello">
-                        Hello, {user.username}!
+                        <NavLink to={`/profile/${user.id}`}>Profile</NavLink>
                     </div>
                         <LogoutButton />
                 </div>)}
